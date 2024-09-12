@@ -1,5 +1,6 @@
 import React from "react";
+import { MobileLayoutWrapper } from "./MobileLayout.style";
 
 export const MobileLayout = () => {
-  return <div>MobileLayout</div>;
+  return <MobileLayoutWrapper>MobileLayout</MobileLayoutWrapper>;
 };
