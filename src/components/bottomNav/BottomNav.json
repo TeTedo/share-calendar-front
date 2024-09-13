@@ -1,0 +1,40 @@
+{
+  "list": [
+    {
+      "id": "1",
+      "name": "Home",
+      "iconUrl": "",
+      "selectedIconUrl": "",
+      "iconAlt": "홈 아이콘",
+      "navUrl": "/home",
+      "index": 1
+    },
+    {
+      "id": "2",
+      "name": "Calendar",
+      "iconUrl": "",
+      "selectedIconUrl": "",
+      "iconAlt": "달력 아이콘",
+      "navUrl": "/calendar",
+      "index": 2
+    },
+    {
+      "id": "3",
+      "name": "Area",
+      "iconUrl": "",
+      "selectedIconUrl": "",
+      "iconAlt": "리스트 아이콘",
+      "navUrl": "/area",
+      "index": 3
+    },
+    {
+      "id": "4",
+      "name": "Setting",
+      "iconUrl": "",
+      "selectedIconUrl": "",
+      "iconAlt": "세팅 아이콘",
+      "navUrl": "/setting",
+      "index": 4
+    }
+  ]
+}
