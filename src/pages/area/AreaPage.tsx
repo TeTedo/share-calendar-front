@@ -1,5 +1,5 @@
 import React from "react";
 
-export const Area = () => {
+export const AreaPage = () => {
   return <div>Area</div>;
 };

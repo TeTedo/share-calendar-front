@@ -1,5 +1,5 @@
 import React from "react";
 
-export const Setting = () => {
+export const SettingPage = () => {
   return <div>Setting</div>;
 };
