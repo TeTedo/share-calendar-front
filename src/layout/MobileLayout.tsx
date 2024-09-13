@@ -1,6 +1,23 @@
 import React from "react";
-import { MobileLayoutWrapper } from "./MobileLayout.style";
+import {
+  MobileLayoutContainer,
+  MobileLayoutWrapper,
+  OutletWrapper,
+} from "./MobileLayout.style";
+import { TopBar } from "components/topBar/TopBar";
+import { Outlet } from "react-router-dom";
+import { BottomNav } from "components/bottomNav/BottomNav";
 
 export const MobileLayout = () => {
-  return <MobileLayoutWrapper>MobileLayout</MobileLayoutWrapper>;
+  return (
+    <MobileLayoutWrapper>
+      <MobileLayoutContainer>
+        <TopBar />
+        <OutletWrapper>
+          <Outlet />
+        </OutletWrapper>
+        <BottomNav />
+      </MobileLayoutContainer>
+    </MobileLayoutWrapper>
+  );
 };

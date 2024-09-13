@@ -10,4 +10,11 @@ export const MobileLayoutWrapper = styled.div`
 export const MobileLayoutContainer = styled.div`
   width: 40rem;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const OutletWrapper = styled.div`
+  width: 100%;
+  height: calc(100vh - 16rem);
 `;
