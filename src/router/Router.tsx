@@ -1,3 +1,4 @@
+import { PAGE_URI } from "constants/pageUri";
 import { MobileLayout } from "layout/MobileLayout";
 import { AreaPage } from "pages/area/AreaPage";
 import { CalendarPage } from "pages/calendar/CalendarPage";
@@ -10,29 +11,29 @@ import { useRoutes } from "react-router-dom";
 export const Router = () => {
   const routes = [
     {
-      path: "/",
+      path: PAGE_URI.ROOT,
       element: <MobileLayout />,
-      children: [{ path: "/", element: <LandingPage /> }],
+      children: [{ path: PAGE_URI.LANDING, element: <LandingPage /> }],
     },
     {
-      path: "/",
+      path: PAGE_URI.ROOT,
       element: <MobileLayout />,
-      children: [{ path: "/home", element: <HomePage /> }],
+      children: [{ path: PAGE_URI.HOME, element: <HomePage /> }],
     },
     {
-      path: "/",
+      path: PAGE_URI.ROOT,
       element: <MobileLayout />,
-      children: [{ path: "/calendar", element: <CalendarPage /> }],
+      children: [{ path: PAGE_URI.CALENDAR, element: <CalendarPage /> }],
     },
     {
-      path: "/",
+      path: PAGE_URI.ROOT,
       element: <MobileLayout />,
-      children: [{ path: "/area", element: <AreaPage /> }],
+      children: [{ path: PAGE_URI.AREA, element: <AreaPage /> }],
     },
     {
-      path: "/",
+      path: PAGE_URI.ROOT,
       element: <MobileLayout />,
-      children: [{ path: "/setting", element: <SettingPage /> }],
+      children: [{ path: PAGE_URI.SETTING, element: <SettingPage /> }],
     },
   ];
 
