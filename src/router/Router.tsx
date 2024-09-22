@@ -1,8 +1,13 @@
+import { PAGE_URI } from "constants/pageUri";
+import { EmptyMobileLayout } from "layout/EmptyMobileLayout";
 import { MobileLayout } from "layout/MobileLayout";
 import { AreaPage } from "pages/area/AreaPage";
 import { CalendarPage } from "pages/calendar/CalendarPage";
+import { ErrorPage } from "pages/error/ErrorPage";
+import { NotFoundPage } from "pages/error/NotFoundPage";
 import { HomePage } from "pages/home/HomePage";
 import { LandingPage } from "pages/landing/LandingPage";
+import { Login } from "pages/login/Login";
 import { SettingPage } from "pages/setting/SettingPage";
 import React from "react";
 import { useRoutes } from "react-router-dom";
@@ -10,29 +15,45 @@ import { useRoutes } from "react-router-dom";
 export const Router = () => {
   const routes = [
     {
-      path: "/",
-      element: <MobileLayout />,
-      children: [{ path: "/", element: <LandingPage /> }],
+      path: PAGE_URI.ROOT,
+      element: <EmptyMobileLayout />,
+      children: [{ path: PAGE_URI.NOT_FOUND, element: <NotFoundPage /> }],
     },
     {
-      path: "/",
-      element: <MobileLayout />,
-      children: [{ path: "/home", element: <HomePage /> }],
+      path: PAGE_URI.ROOT,
+      element: <EmptyMobileLayout />,
+      children: [{ path: PAGE_URI.ERROR, element: <ErrorPage /> }],
     },
     {
-      path: "/",
+      path: PAGE_URI.ROOT,
       element: <MobileLayout />,
-      children: [{ path: "/calendar", element: <CalendarPage /> }],
+      children: [{ path: PAGE_URI.LANDING, element: <LandingPage /> }],
     },
     {
-      path: "/",
+      path: PAGE_URI.ROOT,
       element: <MobileLayout />,
-      children: [{ path: "/area", element: <AreaPage /> }],
+      children: [{ path: PAGE_URI.HOME, element: <HomePage /> }],
     },
     {
-      path: "/",
+      path: PAGE_URI.ROOT,
       element: <MobileLayout />,
-      children: [{ path: "/setting", element: <SettingPage /> }],
+      children: [{ path: PAGE_URI.CALENDAR, element: <CalendarPage /> }],
+    },
+    {
+      path: PAGE_URI.ROOT,
+      element: <MobileLayout />,
+      children: [{ path: PAGE_URI.AREA, element: <AreaPage /> }],
+    },
+    {
+      path: PAGE_URI.ROOT,
+      element: <MobileLayout />,
+      children: [{ path: PAGE_URI.SETTING, element: <SettingPage /> }],
+    },
+
+    {
+      path: PAGE_URI.ROOT,
+      element: <EmptyMobileLayout />,
+      children: [{ path: PAGE_URI.LOGIN, element: <Login /> }],
     },
   ];
 
