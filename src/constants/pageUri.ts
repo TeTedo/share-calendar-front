@@ -1,6 +1,6 @@
 const ROOT = "/";
 
-const LANDING = "/";
+const LANDING = "/landing";
 const HOME = "/home";
 const CALENDAR = "/calendar";
 const AREA = "/area";
