@@ -15,10 +15,15 @@ export const GoogleLoginBtn = () => {
       GOOGLE_AUTH_LOGIN_URI +
       "?client_id=" +
       process.env.REACT_APP_GOOGLE_CLIENT_ID +
-      "&redirect_uri=" +
+      "&" +
+      "redirect_uri=" +
       process.env.REACT_APP_GOOGLE_REDIRECT_URI +
-      "&response_type=code" +
-      "&scope=email profile";
+      "&" +
+      "response_type=code&" +
+      "access_type=offline&" +
+      "include_granted_scopes=true&" +
+      "state=state_parameter_passthrough_value&" +
+      "scope=email profile";
 
     window.location.href = googleAuthUri;
   };
