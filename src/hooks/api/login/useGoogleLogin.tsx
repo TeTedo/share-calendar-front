@@ -5,7 +5,7 @@ import React from "react";
 export const useGoogleLogin = () => {
   const requestUri = "/api/v1/auth/google";
 
-  return useMutation<TGoogleLoginResponse, Error, TGoogleLoginRequest>({
+  return useMutation<TLoginResponse, Error, TGoogleLoginRequest>({
     mutationFn: async (data: TGoogleLoginRequest) =>
       await axiosInstance
         .post(requestUri, data)

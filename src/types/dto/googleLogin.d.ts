@@ -2,7 +2,7 @@ interface TGoogleLoginRequest {
   code: string;
 }
 
-interface TGoogleLoginResponse {
+interface TLoginResponse {
   token: TTokenDto;
   member: TMemberDto;
 }

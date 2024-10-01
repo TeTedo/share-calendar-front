@@ -7,7 +7,7 @@ export const memberState = atom<TMemberDto>({
     name: "게스트",
     email: "게스트@datebook.com",
     profileImg: "",
-    role: "",
+    role: "ROLE_GUEST",
     activated: true,
   },
 });

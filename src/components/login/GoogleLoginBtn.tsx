@@ -21,8 +21,6 @@ export const GoogleLoginBtn = () => {
       "&" +
       "response_type=code&" +
       "access_type=offline&" +
-      "include_granted_scopes=true&" +
-      "state=state_parameter_passthrough_value&" +
       "scope=email profile";
 
     window.location.href = googleAuthUri;
