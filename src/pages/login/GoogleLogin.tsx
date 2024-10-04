@@ -30,6 +30,8 @@ export const GoogleLogin = () => {
 
         // member
         setMemberState(response.member);
+
+        nav("/home");
       },
     });
   };
