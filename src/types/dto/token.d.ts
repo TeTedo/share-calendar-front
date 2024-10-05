@@ -1,4 +1,3 @@
-interface TTokenDto {
-  access: string;
-  refresh: string;
-}
+type TTokenDto = {
+  access: string | null;
+};

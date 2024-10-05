@@ -1,14 +1,14 @@
 import { useMutation } from "@tanstack/react-query";
-import { axiosInstance } from "constants/axios";
 import React from "react";
+import { useAxiosCustom } from "../useAxiosCustom";
 
 export const useGoogleLogin = () => {
+  const axios = useAxiosCustom();
+
   const requestUri = "/api/v1/auth/google";
 
   return useMutation<TGoogleLoginResponse, Error, TGoogleLoginRequest>({
     mutationFn: async (data: TGoogleLoginRequest) =>
-      await axiosInstance
-        .post(requestUri, data)
-        .then((response) => response.data),
+      await axios.post(requestUri, data).then((response) => response.data),
   });
 };
