@@ -1,4 +1,5 @@
 import { useGoogleLogin } from "hooks/api/login/useGoogleLogin";
+import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
 import React, { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
@@ -9,6 +10,8 @@ import { TokenUtil } from "utils/tokenUtil";
 export const GoogleLogin = () => {
   const setTokenState = useSetRecoilState(tokenState);
   const setMemberState = useSetRecoilState(memberState);
+
+  const toast = useToastCustom();
 
   const nav = useNavigate();
   const [queryString] = useSearchParams();
@@ -30,8 +33,11 @@ export const GoogleLogin = () => {
 
         // member
         setMemberState(response.member);
-
         nav("/home");
+        toast(response.member.name + "님 환영합니다.", ToastType.SUCCESS);
+      },
+      onError: (error) => {
+        toast("로그인에 실패하였습니다\n" + error.message, ToastType.ERROR);
       },
     });
   };
