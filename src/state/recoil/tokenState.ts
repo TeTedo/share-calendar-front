@@ -4,6 +4,5 @@ export const tokenState = atom<TTokenDto>({
   key: "tokenState",
   default: {
     access: "",
-    refresh: "",
   },
 });

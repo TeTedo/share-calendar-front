@@ -1,8 +1,8 @@
-interface TGoogleLoginRequest {
+type TGoogleLoginRequest = {
   code: string;
-}
+};
 
-interface TGoogleLoginResponse {
+type TGoogleLoginResponse = {
   token: TTokenDto;
   member: TMemberDto;
-}
+};

@@ -5,7 +5,6 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { memberState } from "state/recoil/memberState";
 import { tokenState } from "state/recoil/tokenState";
-import { TokenUtil } from "utils/tokenUtil";
 
 export const GoogleLogin = () => {
   const setTokenState = useSetRecoilState(tokenState);
@@ -28,12 +27,11 @@ export const GoogleLogin = () => {
     googleLoginHook(data, {
       onSuccess: (response: TGoogleLoginResponse) => {
         // token
-        TokenUtil.setRefreshToken(response.token);
         setTokenState(response.token);
 
         // member
         setMemberState(response.member);
-        nav("/home");
+        nav("/calendar");
         toast(response.member.name + "님 환영합니다.", ToastType.SUCCESS);
       },
       onError: (error) => {
