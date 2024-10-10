@@ -1,5 +1,3 @@
-import axios from "axios";
-import { BASE_URI_API } from "constants/apiUri";
 import { axiosInstance } from "constants/axios";
 import { PAGE_URI } from "constants/pageUri";
 import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
