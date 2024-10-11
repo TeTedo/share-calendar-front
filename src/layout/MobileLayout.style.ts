@@ -8,7 +8,7 @@ export const MobileLayoutWrapper = styled.div`
 `;
 
 export const MobileLayoutContainer = styled.div`
-  width: 40rem;
+  width: 90%;
   height: 100%;
   display: flex;
   flex-direction: column;
