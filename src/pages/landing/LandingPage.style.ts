@@ -17,5 +17,5 @@ export const LoginBtnWrapper = styled.div`
   align-items: center;
 
   width: 100%;
-  height: 20rem;
+  height: 200px;
 `;

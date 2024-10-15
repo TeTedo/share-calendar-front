@@ -5,8 +5,7 @@ export const TopBarWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 8rem;
-  padding: 0 1rem;
+  height: 80px;
 `;
 
 export const LeftContainer = styled.div``;

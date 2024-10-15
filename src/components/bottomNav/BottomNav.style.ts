@@ -5,5 +5,5 @@ export const BottomNavWrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 8rem;
+  height: 80px;
 `;

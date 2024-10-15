@@ -1,26 +1,26 @@
 import styled from "styled-components";
 
 export const LoginBtnWrapper = styled.div`
-  width: 13rem;
+  width: 130px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  border: 0.2rem solid black;
-  padding: 1rem 3rem;
-  border-radius: 1.5rem;
+  gap: 10px;
+  border: 2px solid black;
+  padding: 10px 30px;
+  border-radius: 15px;
   cursor: pointer;
 
   & > img {
-    width: 2rem;
-    height: 2rem;
-    padding: 0.5rem;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
     border-radius: 50%;
     overflow: hidden;
   }
 
   & > div {
-    font-size: 1.5rem;
+    font-size: 1.5px;
     font-weight: bold;
   }
 `;
