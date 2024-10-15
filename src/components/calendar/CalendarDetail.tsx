@@ -10,5 +10,5 @@ interface CalendarDetailProp {
 }
 
 export const CalendarDetail = (props: CalendarDetailProp) => {
-  return <CalendarDetailWrapper></CalendarDetailWrapper>;
+  return <CalendarDetailWrapper>{props.day}</CalendarDetailWrapper>;
 };

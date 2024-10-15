@@ -12,7 +12,6 @@ export const MobileLayout = () => {
   return (
     <MobileLayoutWrapper>
       <MobileLayoutContainer>
-        <TopBar />
         <OutletWrapper>
           <Outlet />
         </OutletWrapper>
