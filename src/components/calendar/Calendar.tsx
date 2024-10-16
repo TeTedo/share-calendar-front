@@ -1,5 +1,9 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { CalendarWrapper } from "./Calendar.style";
+import {
+  S_CalendarWrapper,
+  S_CalendarHeader,
+  S_CalendarBody,
+} from "./Calendar.style";
 import moment, { Moment } from "moment";
 import { CalendarDetail } from "./CalendarDetail";
 
@@ -13,8 +17,8 @@ export const Calendar = ({
   const [direction, setDirection] = useState("");
 
   const daysInMonth = (month: Moment) => {
-    const startOfMonth = month.startOf("month");
-    const endOfMonth = month.endOf("month");
+    const startOfMonth = month.startOf("month").clone();
+    const endOfMonth = month.endOf("month").clone();
     const days = [];
     let day = startOfMonth;
 
@@ -28,25 +32,30 @@ export const Calendar = ({
 
   const renderMonth = (month: Moment) => {
     return daysInMonth(month).map((day) => (
-      <CalendarDetail
-        key={day.format("YYYY-MM-DD")}
-        day={day.date()}
-        color="black"
-        backgroundColor="white"
-        fontSize="10px"
-        list={[]}
-      ></CalendarDetail>
+      <S_CalendarBody.Container>
+        <CalendarDetail
+          key={day.format("YYYY-MM-DD")}
+          day={day.date()}
+          color="black"
+          backgroundColor="white"
+          fontSize="10px"
+          list={[]}
+        ></CalendarDetail>
+      </S_CalendarBody.Container>
     ));
   };
 
-  const previousMonth = currentMonth.clone().subtract(1, "month");
-  const nextMonth = currentMonth.clone().add(1, "month");
-
   return (
-    <CalendarWrapper>
-      <div>{renderMonth(previousMonth)}</div>
-      <div>{renderMonth(currentMonth)}</div>
-      <div>{renderMonth(nextMonth)}</div>
-    </CalendarWrapper>
+    <S_CalendarWrapper>
+      <S_CalendarHeader.Wrapper>
+        {["일", "월", "화", "수", "목", "금", "토"].map((header) => (
+          <S_CalendarHeader.Container>{header}</S_CalendarHeader.Container>
+        ))}
+      </S_CalendarHeader.Wrapper>
+
+      <S_CalendarBody.Wrapper>
+        {renderMonth(currentMonth)}
+      </S_CalendarBody.Wrapper>
+    </S_CalendarWrapper>
   );
 };

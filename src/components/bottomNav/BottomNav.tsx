@@ -1,5 +1,5 @@
 import React from "react";
-import { BottomNavWrapper } from "./BottomNav.style";
+import { S_BottomNavWrapper } from "./BottomNav.style";
 import BottomNavJson from "./BottomNav.json";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +10,7 @@ export const BottomNav = () => {
     nav(url);
   };
   return (
-    <BottomNavWrapper>
+    <S_BottomNavWrapper>
       {BottomNavJson.list
         .sort((a, b) => a.index - b.index)
         .map((menu) => (
@@ -24,6 +24,6 @@ export const BottomNav = () => {
             <img src={menu.iconUrl} alt={menu.iconAlt} />
           </div>
         ))}
-    </BottomNavWrapper>
+    </S_BottomNavWrapper>
   );
 };

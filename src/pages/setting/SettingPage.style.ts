@@ -1,3 +1,3 @@
 import styled from "styled-components";
 
-export const SettingPageWrapper = styled.div``;
+export const S_SettingPageWrapper = styled.div``;

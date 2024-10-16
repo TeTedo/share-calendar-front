@@ -1,5 +1,5 @@
 import React from "react";
-import { LoginBtnWrapper } from "./LoginBtn.style";
+import { S_LoginBtnWrapper } from "./LoginBtn.style";
 import { GOOGLE_AUTH_LOGIN_URI } from "constants/apiUri";
 
 /**
@@ -29,12 +29,12 @@ export const GoogleLoginBtn = () => {
   };
 
   return (
-    <LoginBtnWrapper
+    <S_LoginBtnWrapper
       style={{ border: ".1rem black solid", backgroundColor: "white" }}
       onClick={googleLoginHandler}
     >
       <img src="/icon/google-icon.svg" alt="" />
       <div>구글 로그인</div>
-    </LoginBtnWrapper>
+    </S_LoginBtnWrapper>
   );
 };

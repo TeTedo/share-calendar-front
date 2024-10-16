@@ -1,13 +1,13 @@
 import React from "react";
-import { MobileLayoutWrapper, OutletWrapper } from "./MobileLayout.style";
+import { S_MobileLayoutWrapper, S_OutletWrapper } from "./MobileLayout.style";
 import { Outlet } from "react-router-dom";
 
 export const EmptyMobileLayout = () => {
   return (
-    <MobileLayoutWrapper>
-      <OutletWrapper>
+    <S_MobileLayoutWrapper>
+      <S_OutletWrapper>
         <Outlet />
-      </OutletWrapper>
-    </MobileLayoutWrapper>
+      </S_OutletWrapper>
+    </S_MobileLayoutWrapper>
   );
 };

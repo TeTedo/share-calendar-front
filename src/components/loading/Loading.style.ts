@@ -1,3 +1,3 @@
 import styled from "styled-components";
 
-export const LoadingWrapper = styled.div``;
+export const S_LoadingWrapper = styled.div``;

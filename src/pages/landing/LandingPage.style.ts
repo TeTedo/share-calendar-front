@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LandingPageWrapper = styled.div`
+export const S_LandingPageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,7 +10,7 @@ export const LandingPageWrapper = styled.div`
   height: 100%;
 `;
 
-export const LoginBtnWrapper = styled.div`
+export const S_LoginBtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;

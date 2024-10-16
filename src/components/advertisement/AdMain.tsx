@@ -1,6 +1,6 @@
 import React from "react";
-import { AdWrapper } from "./AdMain.style";
+import { S_AdWrapper } from "./AdMain.style";
 
 export const AdMain = () => {
-  return <AdWrapper>나는 광고인간 입니다.</AdWrapper>;
+  return <S_AdWrapper>나는 광고인간 입니다.</S_AdWrapper>;
 };
