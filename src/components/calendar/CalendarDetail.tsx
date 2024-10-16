@@ -10,5 +10,11 @@ interface CalendarDetailProp {
 }
 
 export const CalendarDetail = (props: CalendarDetailProp) => {
-  return <S_CalendarDetail.Wrapper>{props.day}</S_CalendarDetail.Wrapper>;
+  return (
+    <S_CalendarDetail.Wrapper>
+      <S_CalendarDetail.NumberWrapper $color={props.color}>
+        {props.day}
+      </S_CalendarDetail.NumberWrapper>
+    </S_CalendarDetail.Wrapper>
+  );
 };
