@@ -1,8 +1,8 @@
 import React from "react";
 import {
-  MobileLayoutContainer,
-  MobileLayoutWrapper,
-  OutletWrapper,
+  S_MobileLayoutContainer,
+  S_MobileLayoutWrapper,
+  S_OutletWrapper,
 } from "./MobileLayout.style";
 import { TopBar } from "components/topBar/TopBar";
 import { Outlet } from "react-router-dom";
@@ -10,13 +10,13 @@ import { BottomNav } from "components/bottomNav/BottomNav";
 
 export const MobileLayout = () => {
   return (
-    <MobileLayoutWrapper>
-      <MobileLayoutContainer>
-        <OutletWrapper>
+    <S_MobileLayoutWrapper>
+      <S_MobileLayoutContainer>
+        <S_OutletWrapper>
           <Outlet />
-        </OutletWrapper>
+        </S_OutletWrapper>
         <BottomNav />
-      </MobileLayoutContainer>
-    </MobileLayoutWrapper>
+      </S_MobileLayoutContainer>
+    </S_MobileLayoutWrapper>
   );
 };

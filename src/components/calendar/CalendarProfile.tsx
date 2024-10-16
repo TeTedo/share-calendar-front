@@ -1,6 +1,6 @@
 import React from "react";
-import { CalendarProfileWrapper } from "./CalendarProfile.style";
+import { S_CalendarProfileWrapper } from "./CalendarProfile.style";
 
 export const CalendarProfile = () => {
-  return <CalendarProfileWrapper>CalendarProfile</CalendarProfileWrapper>;
+  return <S_CalendarProfileWrapper>CalendarProfile</S_CalendarProfileWrapper>;
 };

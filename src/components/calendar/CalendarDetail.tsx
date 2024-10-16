@@ -1,5 +1,5 @@
 import React from "react";
-import { CalendarDetailWrapper } from "./CalendarDetail.style";
+import { S_CalendarDetail } from "./CalendarDetail.style";
 
 interface CalendarDetailProp {
   day: number;
@@ -10,5 +10,5 @@ interface CalendarDetailProp {
 }
 
 export const CalendarDetail = (props: CalendarDetailProp) => {
-  return <CalendarDetailWrapper>{props.day}</CalendarDetailWrapper>;
+  return <S_CalendarDetail.Wrapper>{props.day}</S_CalendarDetail.Wrapper>;
 };

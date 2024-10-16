@@ -1,3 +1,8 @@
 import styled from "styled-components";
 
-export const CalendarDetailWrapper = styled.div``;
+export const S_CalendarDetail = {
+  Wrapper: styled.div`
+    width: 100%;
+    height: 100%;
+  `,
+};

@@ -1,3 +1,3 @@
 import styled from "styled-components";
 
-export const HomePageWrapper = styled.div``;
+export const S_HomePageWrapper = styled.div``;

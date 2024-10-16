@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CalendarPageWrapper } from "./CalendarPage.style";
-import { useMemberInfo } from "hooks/api/member/useMemberInfo";
-import { useRefreshToken } from "hooks/api/token/useRefreshToken";
+import { S_CalendarPageWrapper } from "./CalendarPage.style";
 import { CalendarTopBar } from "components/calendar/CalendarTopBar";
 import { AdMain } from "components/advertisement/AdMain";
 import { Calendar } from "components/calendar/Calendar";
@@ -12,11 +10,11 @@ export const CalendarPage = () => {
   const [currentMonth, setCurrentMonth] = useState<Moment>(moment());
 
   return (
-    <CalendarPageWrapper>
-      <CalendarTopBar />
+    <S_CalendarPageWrapper>
+      <CalendarTopBar currentMonth={currentMonth} />
       <AdMain />
       <CalendarProfile />
       <Calendar currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} />
-    </CalendarPageWrapper>
+    </S_CalendarPageWrapper>
   );
 };

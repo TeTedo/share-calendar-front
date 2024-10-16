@@ -1,6 +1,6 @@
 import React from "react";
-import { LoadingWrapper } from "./Loading.style";
+import { S_LoadingWrapper } from "./Loading.style";
 
 export const Loading = () => {
-  return <LoadingWrapper>Loading</LoadingWrapper>;
+  return <S_LoadingWrapper>Loading</S_LoadingWrapper>;
 };

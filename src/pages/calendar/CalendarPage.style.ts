@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CalendarPageWrapper = styled.div`
+export const S_CalendarPageWrapper = styled.div`
   width: 100%;
   height: 100%;
 `;

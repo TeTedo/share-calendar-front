@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TopBarWrapper = styled.div`
+export const S_TopBarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,6 +8,6 @@ export const TopBarWrapper = styled.div`
   height: 80px;
 `;
 
-export const LeftContainer = styled.div``;
+export const S_LeftContainer = styled.div``;
 
-export const RightContainer = styled.div``;
+export const S_RightContainer = styled.div``;
