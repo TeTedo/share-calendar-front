@@ -7,14 +7,14 @@ import { CalendarProfile } from "components/calendar/CalendarProfile";
 import moment, { Moment } from "moment";
 
 export const CalendarPage = () => {
-  const [currentMonth, setCurrentMonth] = useState<Moment>(moment());
+  const [currentDate, setCurrentDate] = useState<Moment>(moment());
 
   return (
     <S_CalendarPageWrapper>
-      <CalendarTopBar currentMonth={currentMonth} />
+      <CalendarTopBar currentDate={currentDate} />
       <AdMain />
       <CalendarProfile />
-      <Calendar currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} />
+      <Calendar currentDate={currentDate} setCurrentDate={setCurrentDate} />
     </S_CalendarPageWrapper>
   );
 };

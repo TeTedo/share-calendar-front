@@ -5,4 +5,10 @@ export const S_CalendarDetail = {
     width: 100%;
     height: 100%;
   `,
+
+  NumberWrapper: styled.div<{ $color: string }>`
+    display: flex;
+    justify-content: center;
+    color: ${(props) => props.$color};
+  `,
 };

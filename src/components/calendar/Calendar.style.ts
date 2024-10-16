@@ -20,6 +20,7 @@ export const S_CalendarHeader = {
 
   Container: styled.div`
     width: calc(100% / 7);
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,6 +37,8 @@ export const S_CalendarHeader = {
 
 export const S_CalendarBody = {
   Wrapper: styled.div`
+    width: 100%;
+    height: calc(100% - 100px);
     display: flex;
     flex-wrap: wrap;
   `,

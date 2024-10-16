@@ -2,7 +2,11 @@ import React from "react";
 import { S_CalendarTopBarWrapper, S_Container } from "./CalendarTopBar.style";
 import { Moment } from "moment";
 
-export const CalendarTopBar = ({ currentMonth }: { currentMonth: Moment }) => {
+export const CalendarTopBar = ({
+  currentDate: currentMonth,
+}: {
+  currentDate: Moment;
+}) => {
   return (
     <S_CalendarTopBarWrapper>
       <S_Container>
