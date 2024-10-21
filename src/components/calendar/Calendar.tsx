@@ -8,8 +8,8 @@ import moment, { Moment } from "moment";
 import { CalendarDetail } from "./CalendarDetail";
 
 export const Calendar = ({
-  currentDate: currentDate,
-  setCurrentDate: setCurrentDate,
+  currentDate,
+  setCurrentDate,
 }: {
   currentDate: Moment;
   setCurrentDate: Dispatch<SetStateAction<Moment>>;
@@ -26,8 +26,8 @@ export const Calendar = ({
   };
 
   const daysInMonth = (month: Moment) => {
-    const startOfMonth = month.startOf("month").clone();
-    const endOfMonth = month.endOf("month").clone();
+    const startOfMonth = month.clone().startOf("month");
+    const endOfMonth = month.clone().endOf("month");
 
     const startOfCalendar = startOfMonth.clone().startOf("week");
     const endOfCalendar = endOfMonth.clone().endOf("week");
@@ -44,11 +44,16 @@ export const Calendar = ({
 
   const renderDay = (month: Moment) => {
     return daysInMonth(month).map((day) => (
-      <S_CalendarBody.Container>
+      <S_CalendarBody.Container key={day.format("YYYY-MM-DD")}>
         <CalendarDetail
-          key={day.format("YYYY-MM-DD")}
           day={day.date()}
-          color={day.isSame(currentDate, "month") ? "black" : "#ccc"}
+          color={
+            day.isSame(currentDate, "month")
+              ? day.isSame(currentDate, "day")
+                ? "blue"
+                : "black"
+              : "#ccc"
+          }
           backgroundColor="white"
           fontSize="15px"
           list={[]}
@@ -61,7 +66,9 @@ export const Calendar = ({
     <S_CalendarWrapper>
       <S_CalendarHeader.Wrapper>
         {["일", "월", "화", "수", "목", "금", "토"].map((header) => (
-          <S_CalendarHeader.Container>{header}</S_CalendarHeader.Container>
+          <S_CalendarHeader.Container key={header}>
+            {header}
+          </S_CalendarHeader.Container>
         ))}
       </S_CalendarHeader.Wrapper>
 

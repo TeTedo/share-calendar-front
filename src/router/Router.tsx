@@ -1,12 +1,12 @@
 import { PAGE_URI } from "constants/pageUri";
 import { EmptyMobileLayout } from "layout/EmptyMobileLayout";
 import { MobileLayout } from "layout/MobileLayout";
-import { AreaPage } from "pages/area/AreaPage";
 import { CalendarPage } from "pages/calendar/CalendarPage";
 import { ErrorPage } from "pages/error/ErrorPage";
 import { NotFoundPage } from "pages/error/NotFoundPage";
 import { HomePage } from "pages/home/HomePage";
 import { LandingPage } from "pages/landing/LandingPage";
+import { ListPage } from "pages/list/ListPage";
 import { Login } from "pages/login/Login";
 import { SettingPage } from "pages/setting/SettingPage";
 import React from "react";
@@ -42,7 +42,7 @@ export const Router = () => {
     {
       path: PAGE_URI.ROOT,
       element: <MobileLayout />,
-      children: [{ path: PAGE_URI.AREA, element: <AreaPage /> }],
+      children: [{ path: PAGE_URI.LIST, element: <ListPage /> }],
     },
     {
       path: PAGE_URI.ROOT,
