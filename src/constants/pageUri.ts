@@ -3,7 +3,7 @@ const ROOT = "/";
 const LANDING = "/landing";
 const HOME = "/home";
 const CALENDAR = "/calendar";
-const AREA = "/area";
+const LIST = "/list";
 const SETTING = "/setting";
 const LOGIN = "/login/:platform";
 const NOT_FOUND = "/*";
@@ -12,7 +12,7 @@ const ERROR = "/error";
 export const PAGE_URI = {
   HOME,
   CALENDAR,
-  AREA,
+  LIST,
   SETTING,
   LANDING,
   ROOT,
