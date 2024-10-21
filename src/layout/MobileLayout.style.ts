@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const S_MobileLayoutWrapper = styled.div`
+export const MobileLayoutWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -10,7 +10,7 @@ export const S_MobileLayoutWrapper = styled.div`
   }
 `;
 
-export const S_MobileLayoutContainer = styled.div`
+export const MobileLayoutContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -22,7 +22,7 @@ export const S_MobileLayoutContainer = styled.div`
   }
 `;
 
-export const S_OutletWrapper = styled.div`
+export const OutletWrapper = styled.div`
   width: 100%;
   height: calc(100vh - 60px);
 `;

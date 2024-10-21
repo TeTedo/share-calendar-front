@@ -1,8 +1,8 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import {
-  S_CalendarWrapper,
-  S_CalendarHeader,
-  S_CalendarBody,
+  CalendarWrapper,
+  CalendarHeader,
+  CalendarBody,
 } from "./Calendar.style";
 import moment, { Moment } from "moment";
 import { CalendarDetail } from "./CalendarDetail";
@@ -44,7 +44,7 @@ export const Calendar = ({
 
   const renderDay = (month: Moment) => {
     return daysInMonth(month).map((day) => (
-      <S_CalendarBody.Container key={day.format("YYYY-MM-DD")}>
+      <CalendarBody.Container key={day.format("YYYY-MM-DD")}>
         <CalendarDetail
           day={day.date()}
           color={
@@ -58,21 +58,21 @@ export const Calendar = ({
           fontSize="15px"
           list={[]}
         ></CalendarDetail>
-      </S_CalendarBody.Container>
+      </CalendarBody.Container>
     ));
   };
 
   return (
-    <S_CalendarWrapper>
-      <S_CalendarHeader.Wrapper>
+    <CalendarWrapper>
+      <CalendarHeader.Wrapper>
         {["일", "월", "화", "수", "목", "금", "토"].map((header) => (
-          <S_CalendarHeader.Container key={header}>
+          <CalendarHeader.Container key={header}>
             {header}
-          </S_CalendarHeader.Container>
+          </CalendarHeader.Container>
         ))}
-      </S_CalendarHeader.Wrapper>
+      </CalendarHeader.Wrapper>
 
-      <S_CalendarBody.Wrapper>{renderDay(currentDate)}</S_CalendarBody.Wrapper>
-    </S_CalendarWrapper>
+      <CalendarBody.Wrapper>{renderDay(currentDate)}</CalendarBody.Wrapper>
+    </CalendarWrapper>
   );
 };

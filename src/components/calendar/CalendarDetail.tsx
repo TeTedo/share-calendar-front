@@ -1,5 +1,5 @@
 import React from "react";
-import { S_CalendarDetail } from "./CalendarDetail.style";
+import { CalendarDetailCom } from "./CalendarDetail.style";
 
 interface CalendarDetailProp {
   day: number;
@@ -11,10 +11,10 @@ interface CalendarDetailProp {
 
 export const CalendarDetail = (props: CalendarDetailProp) => {
   return (
-    <S_CalendarDetail.Wrapper>
-      <S_CalendarDetail.NumberWrapper $color={props.color}>
+    <CalendarDetailCom.Wrapper>
+      <CalendarDetailCom.NumberWrapper $color={props.color}>
         {props.day}
-      </S_CalendarDetail.NumberWrapper>
-    </S_CalendarDetail.Wrapper>
+      </CalendarDetailCom.NumberWrapper>
+    </CalendarDetailCom.Wrapper>
   );
 };
