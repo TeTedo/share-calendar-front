@@ -2,7 +2,7 @@
   "list": [
     {
       "id": "1",
-      "name": "Home",
+      "name": "메인",
       "iconUrl": "/icon/home_icon.svg",
       "selectedIconUrl": "/icon/selected_home_icon.svg",
       "iconAlt": "홈 아이콘",
@@ -11,7 +11,7 @@
     },
     {
       "id": "2",
-      "name": "Calendar",
+      "name": "캘린더",
       "iconUrl": "/icon/calendar_icon.svg",
       "selectedIconUrl": "/icon/selected_calendar_icon.svg",
       "iconAlt": "달력 아이콘",
@@ -20,7 +20,7 @@
     },
     {
       "id": "3",
-      "name": "List",
+      "name": "목록",
       "iconUrl": "/icon/list_icon.svg",
       "selectedIconUrl": "/icon/selected_list_icon.svg",
       "iconAlt": "리스트 아이콘",
@@ -29,7 +29,7 @@
     },
     {
       "id": "4",
-      "name": "Setting",
+      "name": "설정",
       "iconUrl": "/icon/setting_icon.svg",
       "selectedIconUrl": "/icon/selected_setting_icon.svg",
       "iconAlt": "세팅 아이콘",

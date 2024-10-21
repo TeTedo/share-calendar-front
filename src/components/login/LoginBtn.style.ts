@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const S_LoginBtnWrapper = styled.div`
+export const LoginBtnWrapper = styled.div`
   width: 130px;
   display: flex;
   align-items: center;

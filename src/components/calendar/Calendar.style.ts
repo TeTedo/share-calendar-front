@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const S_CalendarWrapper = styled.div`
+export const CalendarWrapper = styled.div`
   width: 100%;
   height: 80%;
   overflow-y: scroll;
@@ -13,7 +13,7 @@ export const S_CalendarWrapper = styled.div`
   }
 `;
 
-export const S_CalendarHeader = {
+export const CalendarHeader = {
   Wrapper: styled.div`
     display: flex;
   `,
@@ -35,7 +35,7 @@ export const S_CalendarHeader = {
   `,
 };
 
-export const S_CalendarBody = {
+export const CalendarBody = {
   Wrapper: styled.div`
     width: 100%;
     height: calc(100% - 100px);
