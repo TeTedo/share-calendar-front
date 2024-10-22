@@ -7,6 +7,8 @@ import {
 import moment, { Moment } from "moment";
 import { CalendarDetail } from "./CalendarDetail";
 
+import scheduleDummy from "./scheduleDummy.json";
+
 export const Calendar = ({
   currentDate,
   setCurrentDate,
@@ -46,7 +48,7 @@ export const Calendar = ({
     return daysInMonth(month).map((day) => (
       <CalendarBody.Container key={day.format("YYYY-MM-DD")}>
         <CalendarDetail
-          day={day.date()}
+          date={day}
           color={
             day.isSame(currentDate, "month")
               ? day.isSame(currentDate, "day")
@@ -56,7 +58,9 @@ export const Calendar = ({
           }
           backgroundColor="white"
           fontSize="15px"
-          list={[]}
+          scheduleList={(scheduleDummy as IScheduleDetail[]).filter(
+            (schedule) => day.isSame(moment(schedule.date), "day")
+          )}
         ></CalendarDetail>
       </CalendarBody.Container>
     ));

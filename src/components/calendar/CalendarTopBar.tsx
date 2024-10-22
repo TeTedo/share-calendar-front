@@ -7,7 +7,7 @@ export const CalendarTopBar = ({ currentDate }: { currentDate: Moment }) => {
     <CalendarTopBarWrapper>
       <Container>
         <div>
-          {currentDate.format("YY")}년 {currentDate.format("MM")}월
+          {currentDate.format("YYYY")}년 {currentDate.format("MM")}월
         </div>
         <div>1팀ㅇㅇ</div>
       </Container>

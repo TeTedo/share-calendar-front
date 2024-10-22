@@ -1,8 +1,8 @@
-type TGoogleLoginRequest = {
+interface IGoogleLoginRequest {
   code: string;
-};
+}
 
-type TGoogleLoginResponse = {
-  token: TTokenDto;
-  member: TMemberDto;
-};
+interface IGoogleLoginResponse {
+  token: ITokenDto;
+  member: IMemberDto;
+}

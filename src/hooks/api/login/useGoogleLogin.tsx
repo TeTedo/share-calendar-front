@@ -7,8 +7,8 @@ export const useGoogleLogin = () => {
 
   const requestUri = "/api/v1/auth/google";
 
-  return useMutation<TGoogleLoginResponse, Error, TGoogleLoginRequest>({
-    mutationFn: async (data: TGoogleLoginRequest) =>
+  return useMutation<IGoogleLoginResponse, Error, IGoogleLoginRequest>({
+    mutationFn: async (data: IGoogleLoginRequest) =>
       await axios.post(requestUri, data).then((response) => response.data),
   });
 };

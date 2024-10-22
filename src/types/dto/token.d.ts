@@ -1,3 +1,3 @@
-type TTokenDto = {
+interface ITokenDto {
   access: string | null;
-};
+}
