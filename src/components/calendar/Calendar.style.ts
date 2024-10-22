@@ -46,6 +46,9 @@ export const CalendarBody = {
     width: calc(100% / 7);
     min-height: 50px;
 
-    overflow-y: scroll;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   `,
 };

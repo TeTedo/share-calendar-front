@@ -9,6 +9,7 @@ import { ScheduleAtom } from "components/atom/ScheduleAtom";
 import { useBaseModal } from "hooks/modal/useBaseModal";
 import { ChooseGroupModal } from "./ChooseGroupModal";
 import { CancelScheduleModal } from "./CancelScheduleModal";
+import { ChooseCategoryModal } from "./ChooseCategoryModal";
 
 export const CalendarModal = ({
   date,
@@ -17,8 +18,21 @@ export const CalendarModal = ({
   date: moment.Moment;
   scheduleList: IScheduleDetail[];
 }) => {
-  const { modal, confirmModal, handleConfirmation, setIsOpen } = useBaseModal({
-    children: <ChooseGroupModal />,
+  const {
+    modal,
+    confirmModal,
+    handleConfirmation,
+    setIsOpen,
+    moveNextStep,
+    movePrevStep,
+  } = useBaseModal({
+    children: [
+      <ChooseGroupModal moveNextStep={() => moveNextStep()} />,
+      <ChooseCategoryModal
+        moveNextStep={() => moveNextStep()}
+        movePrevStep={() => movePrevStep()}
+      />,
+    ],
     confirmationSteps: [
       <CancelScheduleModal
         onConfirm={(confirm: boolean) => handleConfirmation(confirm)}

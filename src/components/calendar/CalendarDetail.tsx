@@ -14,9 +14,9 @@ interface CalendarDetailProp {
 
 export const CalendarDetail = (props: CalendarDetailProp) => {
   const { modal, setIsOpen } = useBaseModal({
-    children: (
-      <CalendarModal date={props.date} scheduleList={props.scheduleList} />
-    ),
+    children: [
+      <CalendarModal date={props.date} scheduleList={props.scheduleList} />,
+    ],
     closeCallBack: () => {},
     isBackgroundBlack: true,
     isCenter: true,

@@ -1,0 +1,38 @@
+[
+  {
+    "categoryId": "1",
+    "categoryMainColor": "#FF5733",
+    "categorySubColor": "#FFBD33",
+    "categoryName": "Technology"
+  },
+  {
+    "categoryId": "2",
+    "categoryMainColor": "#33FF57",
+    "categorySubColor": "#33FFBD",
+    "categoryName": "Health"
+  },
+  {
+    "categoryId": "3",
+    "categoryMainColor": "#3357FF",
+    "categorySubColor": "#33BDFF",
+    "categoryName": "Education"
+  },
+  {
+    "categoryId": "4",
+    "categoryMainColor": "#FF33A1",
+    "categorySubColor": "#FF33D1",
+    "categoryName": "Lifestyle"
+  },
+  {
+    "categoryId": "5",
+    "categoryMainColor": "#A133FF",
+    "categorySubColor": "#D133FF",
+    "categoryName": "Entertainment"
+  },
+  {
+    "categoryId": "6",
+    "categoryMainColor": "#FF8C33",
+    "categorySubColor": "#FFC133",
+    "categoryName": "Business"
+  }
+]
