@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CalendarDetailCom, ScheduleList } from "./CalendarDetail.style";
 import { useBaseModal } from "hooks/modal/useBaseModal";
 import { CalendarModal } from "components/modal/calendar/CalendarModal";
+import { ScheduleAtom } from "components/atom/ScheduleAtom";
 
 interface CalendarDetailProp {
   date: moment.Moment;
@@ -35,13 +36,16 @@ export const CalendarDetail = (props: CalendarDetailProp) => {
         </CalendarDetailCom.NumberWrapper>
         <ScheduleList.Wrapper>
           {props.scheduleList.map((schedule) => (
-            <ScheduleList.Container
-              $mainColor={schedule.category.categoryMainColor}
-              $subColor={schedule.category.categorySubColor}
+            <ScheduleAtom
+              fontSize="9px"
+              height="20px"
+              isTextCenter={false}
+              mainColor={schedule.category.categoryMainColor}
+              subColor={schedule.category.categorySubColor}
+              width="100%"
             >
-              <div></div>
-              <div>{schedule.scheduleName}</div>
-            </ScheduleList.Container>
+              {schedule.scheduleName}
+            </ScheduleAtom>
           ))}
         </ScheduleList.Wrapper>
       </CalendarDetailCom.Wrapper>
