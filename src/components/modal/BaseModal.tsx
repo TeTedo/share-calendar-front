@@ -1,14 +1,33 @@
 import React, { ReactNode } from "react";
-import { BaseModalWrapper } from "./BaseModal.style";
+import { BaseModalContainer, BaseModalWrapper } from "./BaseModal.style";
 
 export const BaseModal = ({
   children,
   closeCallBack,
   isBackgroundBlack,
+  isCenter,
 }: {
   children: ReactNode;
-  closeCallBack: Function;
+  closeCallBack: () => void;
   isBackgroundBlack: boolean;
+  isCenter: boolean;
 }) => {
-  return <BaseModalWrapper>BaseModal</BaseModalWrapper>;
+  const closeHandler = (event: React.MouseEvent) => {
+    if (event.currentTarget === event.target) {
+      closeCallBack();
+    }
+  };
+
+  return (
+    <BaseModalWrapper
+      $isCenter={isCenter}
+      $isBackgroundBlack={isBackgroundBlack}
+      onClick={(event) => {
+        event.preventDefault();
+        closeHandler(event);
+      }}
+    >
+      <BaseModalContainer>{children}</BaseModalContainer>
+    </BaseModalWrapper>
+  );
 };

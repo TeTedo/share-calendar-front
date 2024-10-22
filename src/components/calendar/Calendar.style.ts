@@ -44,5 +44,8 @@ export const CalendarBody = {
   `,
   Container: styled.div`
     width: calc(100% / 7);
+    min-height: 50px;
+
+    overflow-y: scroll;
   `,
 };

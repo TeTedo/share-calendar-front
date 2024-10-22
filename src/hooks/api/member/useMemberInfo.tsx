@@ -9,7 +9,7 @@ export const useMemberInfo = () => {
 
   return useQuery({
     queryKey: ["/member/info"],
-    queryFn: (): Promise<TMemberDto> =>
+    queryFn: (): Promise<IMemberDto> =>
       axios.get(requestUri).then((response) => response.data),
   });
 };

@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const memberState = atom<TMemberDto>({
+export const memberState = atom<IMemberDto>({
   key: "memberState",
   default: {
     uuid: "guest",
