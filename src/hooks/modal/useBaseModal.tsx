@@ -23,7 +23,8 @@ export const useBaseModal = ({
   const closeAllModals = () => {
     setIsOpen(false);
     setIsConfirmOpen(false);
-    setCurrentConfirmStep(0); // Reset steps
+    setCurrentConfirmStep(0);
+    setCurrentStep(0);
     closeCallBack(); // Trigger any additional logic when closing
   };
 
@@ -32,16 +33,25 @@ export const useBaseModal = ({
       setIsConfirmOpen(true); // Start confirmation process
     } else {
       setIsOpen(false);
+      setCurrentStep(0);
       closeCallBack();
     }
   };
 
   const moveNextStep = () => {
-    setCurrentStep((prev) => prev + 1);
+    if (currentStep < children.length - 1) {
+      setCurrentStep((prev) => prev + 1);
+    } else {
+      setCurrentStep(children.length - 1);
+    }
   };
 
   const movePrevStep = () => {
-    setCurrentStep((prev) => prev - 1);
+    if (currentStep > 0) {
+      setCurrentStep((prev) => prev - 1);
+    } else {
+      setCurrentStep(0);
+    }
   };
 
   const handleConfirmation = (confirmed: boolean) => {
@@ -51,9 +61,9 @@ export const useBaseModal = ({
       } else {
         setIsOpen(false);
         setIsConfirmOpen(false);
-        closeCallBack();
         setCurrentConfirmStep(0); // Reset the confirmation steps
         setCurrentStep(0);
+        closeCallBack();
       }
     } else {
       setIsConfirmOpen(false);
