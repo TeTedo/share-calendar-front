@@ -14,7 +14,7 @@ export const CalendarModalBaseContainer = styled.div`
 
 export const CalendarModalWrapper = styled(CalendarModalBaseWrapper)``;
 
-export const CalendarModalContainer = {
+export const CalendarStyle = {
   Wrapper: styled(CalendarModalBaseContainer)``,
   Header: styled.div`
     display: flex;
@@ -136,6 +136,7 @@ export const ChooseGroupModalStyle = {
     justify-content: center;
     align-items: center;
     font-size: 10px;
+    cursor: pointer;
   `,
 };
 
@@ -205,6 +206,7 @@ export const Style = {
     justify-content: center;
     align-items: center;
     font-size: 10px;
+    cursor: pointer;
   `,
 };
 

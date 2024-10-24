@@ -14,3 +14,7 @@ interface ICategory {
   categoryMainColor: string;
   categorySubColor: string;
 }
+
+interface IGroup {
+  uuid: string;
+}

@@ -18,7 +18,7 @@ export const ChooseGroupModal = ({
         </ChooseGroupModalStyle.Header>
         <ChooseGroupModalStyle.Body>
           <ChooseGroupModalStyle.BodyTitle>
-            팀 선택
+            그룹 선택
           </ChooseGroupModalStyle.BodyTitle>
           <ChooseGroupModalStyle.TeamSelectBox>
             {groupList.map((group) => (

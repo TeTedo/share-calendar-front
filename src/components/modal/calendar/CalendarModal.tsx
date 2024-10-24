@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  CalendarModalContainer,
+  CalendarStyle,
   CalendarModalWrapper,
   ScheduleEmoticonBtn,
   ScheduleList,
@@ -10,6 +10,7 @@ import { useBaseModal } from "hooks/modal/useBaseModal";
 import { ChooseGroupModal } from "./ChooseGroupModal";
 import { CancelScheduleModal } from "./CancelScheduleModal";
 import { ChooseCategoryModal } from "./ChooseCategoryModal";
+import { AddScheduleModal } from "./AddScheduleModal";
 
 export const CalendarModal = ({
   date,
@@ -18,7 +19,11 @@ export const CalendarModal = ({
   date: moment.Moment;
   scheduleList: IScheduleDetail[];
 }) => {
+  const [selectedGroup, setSelectedGroup] = useState<IGroup>();
+  const [selectedCategory, setSelectedCategory] = useState<ICategory>();
+
   const {
+    closeAllModals,
     modal,
     confirmModal,
     handleConfirmation,
@@ -31,6 +36,10 @@ export const CalendarModal = ({
       <ChooseCategoryModal
         moveNextStep={() => moveNextStep()}
         movePrevStep={() => movePrevStep()}
+      />,
+      <AddScheduleModal
+        movePrevStep={() => movePrevStep()}
+        closeAllModals={() => closeAllModals()}
       />,
     ],
     confirmationSteps: [
@@ -48,21 +57,19 @@ export const CalendarModal = ({
       {modal}
       {confirmModal}
       <CalendarModalWrapper>
-        <CalendarModalContainer.Wrapper>
-          <CalendarModalContainer.Header>
-            <CalendarModalContainer.HeaderLeft>
-              <CalendarModalContainer.HeaderDate>
+        <CalendarStyle.Wrapper>
+          <CalendarStyle.Header>
+            <CalendarStyle.HeaderLeft>
+              <CalendarStyle.HeaderDate>
                 {date.format("YYYY년 MM월 DD일")}
-              </CalendarModalContainer.HeaderDate>
-              <CalendarModalContainer.HeaderText>
-                스케줄 관리
-              </CalendarModalContainer.HeaderText>
-            </CalendarModalContainer.HeaderLeft>
+              </CalendarStyle.HeaderDate>
+              <CalendarStyle.HeaderText>스케줄 관리</CalendarStyle.HeaderText>
+            </CalendarStyle.HeaderLeft>
             <ScheduleEmoticonBtn>
               <img src="/icon/add_emoticon_btn.svg" alt="이모티콘 추가 버튼" />
             </ScheduleEmoticonBtn>
-          </CalendarModalContainer.Header>
-          <CalendarModalContainer.Body>
+          </CalendarStyle.Header>
+          <CalendarStyle.Body>
             <ScheduleList.Wrapper>
               {scheduleList.map((schedule) => (
                 <ScheduleAtom
@@ -86,8 +93,8 @@ export const CalendarModal = ({
             >
               <img src="/icon/schedule_add_btn.svg" alt="스케줄 추가 버튼" />
             </ScheduleAtom>
-          </CalendarModalContainer.Body>
-        </CalendarModalContainer.Wrapper>
+          </CalendarStyle.Body>
+        </CalendarStyle.Wrapper>
       </CalendarModalWrapper>
     </>
   );
