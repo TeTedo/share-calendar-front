@@ -17,7 +17,7 @@ export const CalendarModal = ({
   scheduleList,
 }: {
   date: moment.Moment;
-  scheduleList: IScheduleDetail[];
+  scheduleList: IScheduleDto[];
 }) => {
   const [selectedGroup, setSelectedGroup] = useState<IGroupDto>();
   const [selectedCategory, setSelectedCategory] = useState<ICategoryDto>();

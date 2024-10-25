@@ -58,8 +58,8 @@ export const Calendar = ({
           }
           backgroundColor="white"
           fontSize="15px"
-          scheduleList={(scheduleDummy as IScheduleDetail[]).filter(
-            (schedule) => day.isSame(moment(schedule.date), "day")
+          scheduleList={([] as IScheduleDto[]).filter((schedule) =>
+            day.isSame(moment(schedule.date), "day")
           )}
         ></CalendarDetail>
       </CalendarBody.Container>

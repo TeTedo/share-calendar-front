@@ -8,3 +8,9 @@ interface IGroupDto {
   groupName: string;
   groupImg: string;
 }
+
+interface IGroupMemberDto {
+  groupNickname: string;
+  groupProfileImg: string;
+  groupRole: string;
+}
