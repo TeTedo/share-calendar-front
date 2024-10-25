@@ -4,3 +4,7 @@ interface ICategoryDto {
   categoryMainColor: string;
   categorySubColor: string;
 }
+
+interface IGetCategoriesByGroup {
+  categoryList: ICategoryDto[];
+}

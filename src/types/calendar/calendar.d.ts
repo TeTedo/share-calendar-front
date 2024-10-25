@@ -8,13 +8,6 @@ interface IScheduleDetail {
   category: ICategory;
 }
 
-interface ICategory {
-  id: number;
-  categoryName: string;
-  categoryMainColor: string;
-  categorySubColor: string;
-}
-
 interface IGroup {
   uuid: string;
 }

@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { ChooseGroupModalStyle } from "./CalendarModal.style";
 
 import groupList from "components/calendar/groupDummy.json";
+import { useGetGroups } from "hooks/api/group/useGetGroups";
 
 export const ChooseGroupModal = ({
   moveNextStep,
+  setSelectedGroup,
+  selectedGroup,
 }: {
   moveNextStep: () => void;
+  setSelectedGroup: Dispatch<SetStateAction<IGroupDto | undefined>>;
+  selectedGroup: IGroupDto | undefined;
 }) => {
-  const [selectedGroupId, setSelectedGroupId] = useState<string>("");
+  const { isSuccess, data } = useGetGroups();
 
   return (
     <ChooseGroupModalStyle.Wrapper>
@@ -21,19 +26,16 @@ export const ChooseGroupModal = ({
             그룹 선택
           </ChooseGroupModalStyle.BodyTitle>
           <ChooseGroupModalStyle.TeamSelectBox>
-            {groupList.map((group) => (
+            {data?.groupList.map((group) => (
               <ChooseGroupModalStyle.TeamContainer
                 key={group.groupId}
-                onClick={() => setSelectedGroupId(group.groupId)}
-                $isSelected={selectedGroupId === group.groupId}
+                onClick={() => setSelectedGroup(group)}
+                $isSelected={selectedGroup?.groupId === group.groupId}
               >
-                <img
-                  src={group.groupProfileImg}
-                  alt={group.groupProfileImgAlt}
-                />
+                <img src={group.groupImg} alt={group.groupName} />
                 <div>
                   <div>{group.groupName}</div>
-                  <div>{group.groupDesc}</div>
+                  <div>{group.groupName}</div>
                 </div>
               </ChooseGroupModalStyle.TeamContainer>
             ))}
@@ -41,7 +43,7 @@ export const ChooseGroupModal = ({
           <ChooseGroupModalStyle.BtnWrapper>
             <ChooseGroupModalStyle.NextBtn
               $isSelected={
-                selectedGroupId !== null && selectedGroupId.length > 0
+                selectedGroup !== undefined && selectedGroup !== null
               }
               onClick={() => moveNextStep()}
             >

@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { Style } from "./CalendarModal.style";
 
 import categoryList from "components/calendar/categoryDummy.json";
+import { useGetCategoriesByGroup } from "hooks/api/category/useGetCategoriesByGroup";
 
 export const ChooseCategoryModal = ({
   moveNextStep,
   movePrevStep,
+  selectedGroup,
+  setSelectedCategory,
+  selectedCategory,
 }: {
   moveNextStep: () => void;
   movePrevStep: () => void;
+  selectedGroup: IGroupDto;
+  setSelectedCategory: Dispatch<SetStateAction<ICategoryDto | undefined>>;
+  selectedCategory: ICategoryDto | undefined;
 }) => {
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
+  const { data } = useGetCategoriesByGroup(selectedGroup.groupId);
 
   return (
     <Style.Wrapper>
@@ -19,11 +26,13 @@ export const ChooseCategoryModal = ({
         <Style.Body>
           <Style.BodyTitle>카테고리 선택</Style.BodyTitle>
           <Style.CategorySelectBox>
-            {categoryList.map((category) => (
+            {data?.categoryList.map((category) => (
               <Style.CategoryContainer
                 key={category.categoryId}
-                onClick={() => setSelectedCategoryId(category.categoryId)}
-                $isSelected={selectedCategoryId === category.categoryId}
+                onClick={() => setSelectedCategory(category)}
+                $isSelected={
+                  selectedCategory?.categoryId === category.categoryId
+                }
                 $mainColor={category.categoryMainColor}
               >
                 <div></div>
@@ -36,7 +45,9 @@ export const ChooseCategoryModal = ({
           <Style.BtnWrapper>
             <Style.NextBtn onClick={() => movePrevStep()}>이전</Style.NextBtn>
             <Style.NextBtn
-              $isSelected={selectedCategoryId.length > 0}
+              $isSelected={
+                selectedCategory !== undefined && selectedCategory !== null
+              }
               onClick={() => moveNextStep()}
             >
               다음

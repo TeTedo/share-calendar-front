@@ -1,10 +1,5 @@
 interface IGroupListDto {
-  list: IGetGroupByMemberDto[];
-}
-
-interface IGetGroupByMemberDto {
-  group: IGroupDto;
-  categoryList: ICategoryDto[];
+  groupList: IGroupDto[];
 }
 
 interface IGroupDto {
