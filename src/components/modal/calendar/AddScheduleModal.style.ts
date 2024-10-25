@@ -21,39 +21,74 @@ export const Style = {
     font-size: 9px;
   `,
 
-  CategorySelectBox: styled.div`
-    width: 220px;
-    height: 200px;
-    background-color: #fbfbfb;
+  InputSchedule: styled.input`
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 11px;
+    margin-top: 10px;
+    padding: 5px 0;
+  `,
 
+  AllDayWrapper: styled.div`
+    margin-top: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    color: #777777;
+  `,
+
+  Switch: styled.div`
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 20px;
+  `,
+  Slider: styled.div<{ $isOn: boolean }>`
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: ${({ $isOn }) => ($isOn ? "#E16559" : "#A4A4A4")};
+    transition: 0.4s;
+    border-radius: 20px;
+
+    &::before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+      transform: ${({ $isOn }) =>
+        $isOn ? "translateX(15px)" : "translateX(0)"};
+    }
+  `,
+  CheckBox: styled.div`
+    opacity: 0;
+    width: 0;
+    height: 0;
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  `,
+
+  DateWrapper: styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-
-    overflow: auto;
+    gap: 5px;
+    margin-top: 13px;
   `,
-
-  CategoryContainer: styled.div<{ $isSelected: boolean; $mainColor: string }>`
-    display: flex;
-    width: 100%;
-    padding: 8px 12px;
-    justify-content: space-between;
-    background-color: ${(props) => (props.$isSelected ? "#F4F3F3" : "")};
-
-    & > div:first-child {
-      width: 20px;
-      height: 20px;
-      border-radius: 5px;
-      background-color: ${(props) => props.$mainColor};
-    }
-
-    & > div:last-child {
-      display: flex;
-      align-items: center;
-      font-size: 9px;
-      color: #777777;
-    }
-  `,
+  DateContainer: styled.div``,
 
   BtnWrapper: styled.div`
     display: flex;

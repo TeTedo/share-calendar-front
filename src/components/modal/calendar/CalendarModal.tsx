@@ -47,6 +47,8 @@ export const CalendarModal = ({
       <AddScheduleModal
         movePrevStep={() => movePrevStep()}
         closeAllModals={() => closeAllModals()}
+        selectedGroup={selectedGroup!}
+        selectedCategory={selectedCategory!}
       />,
     ],
     confirmationSteps: [

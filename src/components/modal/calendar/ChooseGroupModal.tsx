@@ -3,6 +3,7 @@ import { ChooseGroupModalStyle } from "./CalendarModal.style";
 
 import groupList from "components/calendar/groupDummy.json";
 import { useGetGroups } from "hooks/api/group/useGetGroups";
+import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
 
 export const ChooseGroupModal = ({
   moveNextStep,
@@ -14,7 +15,15 @@ export const ChooseGroupModal = ({
   selectedGroup: IGroupDto | undefined;
 }) => {
   const { isSuccess, data } = useGetGroups();
+  const toast = useToastCustom();
 
+  const moveNextStepHandler = () => {
+    if (!selectedGroup) {
+      toast("그룹을 선택해야 합니다.", ToastType.ERROR);
+      return;
+    }
+    moveNextStep();
+  };
   return (
     <ChooseGroupModalStyle.Wrapper>
       <ChooseGroupModalStyle.Container>
@@ -45,7 +54,7 @@ export const ChooseGroupModal = ({
               $isSelected={
                 selectedGroup !== undefined && selectedGroup !== null
               }
-              onClick={() => moveNextStep()}
+              onClick={() => moveNextStepHandler()}
             >
               다음
             </ChooseGroupModalStyle.NextBtn>

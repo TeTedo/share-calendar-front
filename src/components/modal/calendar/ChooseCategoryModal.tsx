@@ -3,6 +3,7 @@ import { Style } from "./CalendarModal.style";
 
 import categoryList from "components/calendar/categoryDummy.json";
 import { useGetCategoriesByGroup } from "hooks/api/category/useGetCategoriesByGroup";
+import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
 
 export const ChooseCategoryModal = ({
   moveNextStep,
@@ -19,6 +20,15 @@ export const ChooseCategoryModal = ({
 }) => {
   const { data } = useGetCategoriesByGroup(selectedGroup.groupId);
 
+  const toast = useToastCustom();
+
+  const moveNextStepHandler = () => {
+    if (!selectedCategory) {
+      toast("카테고리를 선택해야 합니다.", ToastType.ERROR);
+      return;
+    }
+    moveNextStep();
+  };
   return (
     <Style.Wrapper>
       <Style.Container>
@@ -48,7 +58,7 @@ export const ChooseCategoryModal = ({
               $isSelected={
                 selectedCategory !== undefined && selectedCategory !== null
               }
-              onClick={() => moveNextStep()}
+              onClick={() => moveNextStepHandler()}
             >
               다음
             </Style.NextBtn>
