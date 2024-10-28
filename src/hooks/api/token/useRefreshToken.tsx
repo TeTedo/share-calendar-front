@@ -7,7 +7,7 @@ export const useRefreshToken = () => {
 
   const requestUri = "/api/v1/auth/refresh-token";
 
-  return useMutation<ITokenDto, Error, VoidFunction>({
+  return useMutation<ILoginResponse, Error, {}>({
     mutationFn: async () =>
       await axios.post(requestUri).then((response) => response.data),
   });

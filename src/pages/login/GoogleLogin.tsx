@@ -25,7 +25,7 @@ export const GoogleLogin = () => {
   const loginGoogleHandler = () => {
     const data = { code };
     googleLoginHook(data, {
-      onSuccess: (response: IGoogleLoginResponse) => {
+      onSuccess: (response: ILoginResponse) => {
         // token
         setTokenState(response.token);
 

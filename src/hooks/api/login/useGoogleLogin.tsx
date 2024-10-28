@@ -7,7 +7,7 @@ export const useGoogleLogin = () => {
 
   const requestUri = "/api/v1/auth/google";
 
-  return useMutation<IGoogleLoginResponse, Error, IGoogleLoginRequest>({
+  return useMutation<ILoginResponse, Error, IGoogleLoginRequest>({
     mutationFn: async (data: IGoogleLoginRequest) =>
       await axios.post(requestUri, data).then((response) => response.data),
   });
