@@ -1,4 +1,5 @@
 import { useMemberInfo } from "hooks/api/member/useMemberInfo";
+import { useGetAllSchedules } from "hooks/api/schedule/useGetAllSchedules";
 import { useRefreshToken } from "hooks/api/token/useRefreshToken";
 import { TanstackQueryProvider } from "provider/TanstackQueryProvider";
 import React, { useEffect, useState } from "react";
@@ -7,14 +8,25 @@ import { ToastContainer } from "react-toastify";
 import { RecoilRoot, useRecoilState, useSetRecoilState } from "recoil";
 import { Router } from "router/Router";
 import { memberState } from "state/recoil/memberState";
+import { scheduleState } from "state/recoil/scheduleState";
 import { tokenState } from "state/recoil/tokenState";
 
 function AppContent() {
   const [redirected, setRedirected] = useState<boolean>(false);
   const location = useLocation();
   const [memberRecoil, setMemberRecoil] = useRecoilState(memberState);
-  const setTokenState = useSetRecoilState(tokenState);
+  const [tokenRecoil, setTokenRecoil] = useRecoilState(tokenState);
+  const setScheduleList = useSetRecoilState(scheduleState);
   const { mutate } = useRefreshToken();
+
+  const { data: schedules, isSuccess: successScheduleList } =
+    useGetAllSchedules(tokenRecoil);
+
+  useEffect(() => {
+    if (successScheduleList) {
+      setScheduleList(schedules.scheduleList);
+    }
+  }, [successScheduleList]);
 
   useEffect(() => {
     if (
@@ -29,7 +41,7 @@ function AppContent() {
         {},
         {
           onSuccess: (response) => {
-            setTokenState(response.token);
+            setTokenRecoil(response.token);
             setMemberRecoil(response.member);
           },
           onError: () => {

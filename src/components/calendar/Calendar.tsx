@@ -7,7 +7,8 @@ import {
 import moment, { Moment } from "moment";
 import { CalendarDetail } from "./CalendarDetail";
 
-import scheduleDummy from "./scheduleDummy.json";
+import { useRecoilValue } from "recoil";
+import { scheduleState } from "state/recoil/scheduleState";
 
 export const Calendar = ({
   currentDate,
@@ -22,10 +23,11 @@ export const Calendar = ({
     setCurrentDate(currentDate.clone().add(1, "month"));
   };
 
-  // Go to the previous month
   const prevMonth = () => {
     setCurrentDate(currentDate.clone().subtract(1, "month"));
   };
+
+  const scheduleList = useRecoilValue(scheduleState);
 
   const daysInMonth = (month: Moment) => {
     const startOfMonth = month.clone().startOf("month");
@@ -58,7 +60,7 @@ export const Calendar = ({
           }
           backgroundColor="white"
           fontSize="15px"
-          scheduleList={([] as IScheduleDto[]).filter((schedule) =>
+          scheduleList={scheduleList.filter((schedule) =>
             day.isSame(moment(schedule.date), "day")
           )}
         ></CalendarDetail>

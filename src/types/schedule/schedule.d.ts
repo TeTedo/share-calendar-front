@@ -2,6 +2,7 @@ interface IScheduleDto {
   group: IGroupDto;
   creator: IGroupMemberDto;
   category: ICategoryDto;
+  scheduleId: number;
   scheduleName: string;
   date: string;
   startAt: string;
@@ -18,4 +19,8 @@ interface IAddScheduleRequest {
   date: string;
   startAt?: string;
   endAt?: string;
+}
+
+interface IGetAllSchedulesResponse {
+  scheduleList: IScheduleDto[];
 }
