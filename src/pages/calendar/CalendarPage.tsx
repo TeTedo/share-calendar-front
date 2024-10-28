@@ -8,12 +8,13 @@ import moment, { Moment } from "moment";
 
 export const CalendarPage = () => {
   const [currentDate, setCurrentDate] = useState<Moment>(moment());
-
+  const [currentGroup, setCurrentGroup] = useState<IGroupDto | null>(null);
+  const [groupMember, setGroupMember] = useState<IGroupMemberDto | null>(null);
   return (
     <CalendarPageWrapper>
       <CalendarTopBar currentDate={currentDate} />
       <AdMain />
-      <CalendarProfile />
+      <CalendarProfile groupMember={groupMember} />
       <Calendar currentDate={currentDate} setCurrentDate={setCurrentDate} />
     </CalendarPageWrapper>
   );

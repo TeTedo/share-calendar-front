@@ -16,6 +16,6 @@ interface IAddScheduleRequest {
   scheduleName: string;
   allDayYn: boolean;
   date: string;
-  startAt: string;
-  endAt: string;
+  startAt?: string;
+  endAt?: string;
 }

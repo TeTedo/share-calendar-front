@@ -49,6 +49,7 @@ export const CalendarModal = ({
         closeAllModals={() => closeAllModals()}
         selectedGroup={selectedGroup!}
         selectedCategory={selectedCategory!}
+        date={date}
       />,
     ],
     confirmationSteps: [
