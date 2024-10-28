@@ -7,11 +7,15 @@ interface IGroupDto {
   groupUuid: string;
   groupName: string;
   groupImg: string;
-  groupMemberCount: number;
 }
 
 interface IGroupMemberDto {
   groupNickname: string;
   groupProfileImg: string;
   groupRole: string;
+}
+
+interface IGetGroupMemberResponse {
+  groupMember: IGroupMemberDto;
+  groupMemberCount: number;
 }

@@ -11,4 +11,10 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+  & > select {
+    border: none;
+    background-color: white;
+    font-size: 16px;
+  }
 `;
