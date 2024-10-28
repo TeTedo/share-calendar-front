@@ -1,7 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { Style } from "./CalendarModal.style";
 
-import categoryList from "components/calendar/categoryDummy.json";
 import { useGetCategoriesByGroup } from "hooks/api/category/useGetCategoriesByGroup";
 import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
 

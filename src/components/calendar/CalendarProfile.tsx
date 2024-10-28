@@ -1,6 +1,9 @@
 import React from "react";
 import { CalendarProfileWrapper } from "./CalendarProfile.style";
 
-export const CalendarProfile = () => {
+interface ICalendarProfileProps {
+  groupMember: IGroupMemberDto | null;
+}
+export const CalendarProfile = ({ groupMember }: ICalendarProfileProps) => {
   return <CalendarProfileWrapper>CalendarProfile</CalendarProfileWrapper>;
 };

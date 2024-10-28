@@ -1,7 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { ChooseGroupModalStyle } from "./CalendarModal.style";
 
-import groupList from "components/calendar/groupDummy.json";
 import { useGetGroups } from "hooks/api/group/useGetGroups";
 import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
 
