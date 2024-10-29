@@ -37,6 +37,7 @@ export const CalendarDetail = (props: CalendarDetailProp) => {
         <ScheduleList.Wrapper>
           {props.scheduleList.map((schedule) => (
             <ScheduleAtom
+              key={schedule.scheduleId}
               fontSize="9px"
               height="20px"
               isTextCenter={false}

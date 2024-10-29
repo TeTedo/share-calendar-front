@@ -3,6 +3,8 @@ import { Style } from "./AddScheduleModal.style";
 import { ScheduleDatePick } from "components/atom/ScheduleDatePick";
 import { useAddSchedule } from "hooks/api/schedule/useAddSchedule";
 import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
+import { useSetRecoilState } from "recoil";
+import { scheduleState } from "state/recoil/scheduleState";
 
 export const AddScheduleModal = ({
   closeAllModals,
@@ -22,6 +24,7 @@ export const AddScheduleModal = ({
   const [startAt, setStartAt] = useState<moment.Moment>(date.clone());
   const [endAt, setEndAt] = useState<moment.Moment>(date.clone());
 
+  const setScheduleList = useSetRecoilState(scheduleState);
   const toast = useToastCustom();
   const { mutate } = useAddSchedule();
   const verifyAddable: () => boolean = () => {
@@ -42,6 +45,7 @@ export const AddScheduleModal = ({
     mutate(data, {
       onSuccess: (response) => {
         toast("일정 생성 완료!", ToastType.SUCCESS);
+        setScheduleList((prev) => [...prev, response]);
         closeAllModals();
       },
       onError: (e) => {
