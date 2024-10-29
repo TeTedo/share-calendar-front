@@ -1,3 +1,4 @@
+import { useGetGroupsWithCategories } from "hooks/api/group/useGetGroupsWithCategories";
 import { useMemberInfo } from "hooks/api/member/useMemberInfo";
 import { useGetAllSchedules } from "hooks/api/schedule/useGetAllSchedules";
 import { useRefreshToken } from "hooks/api/token/useRefreshToken";
@@ -7,6 +8,7 @@ import { BrowserRouter, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { RecoilRoot, useRecoilState, useSetRecoilState } from "recoil";
 import { Router } from "router/Router";
+import { groupCategoryState } from "state/recoil/groupCategoryState";
 import { memberState } from "state/recoil/memberState";
 import { scheduleState } from "state/recoil/scheduleState";
 import { tokenState } from "state/recoil/tokenState";
@@ -17,16 +19,26 @@ function AppContent() {
   const [memberRecoil, setMemberRecoil] = useRecoilState(memberState);
   const [tokenRecoil, setTokenRecoil] = useRecoilState(tokenState);
   const setScheduleList = useSetRecoilState(scheduleState);
+  const setGroupAndCategory = useSetRecoilState(groupCategoryState);
   const { mutate } = useRefreshToken();
 
   const { data: schedules, isSuccess: successScheduleList } =
     useGetAllSchedules(tokenRecoil);
+
+  const { data: groupWithCategories, isSuccess: successGroupCategory } =
+    useGetGroupsWithCategories(tokenRecoil);
 
   useEffect(() => {
     if (successScheduleList) {
       setScheduleList(schedules.scheduleList);
     }
   }, [successScheduleList]);
+
+  useEffect(() => {
+    if (successGroupCategory) {
+      setGroupAndCategory(groupWithCategories.list);
+    }
+  }, [successGroupCategory]);
 
   useEffect(() => {
     if (

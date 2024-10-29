@@ -4,21 +4,20 @@ import { Style } from "./CalendarModal.style";
 import { useGetCategoriesByGroup } from "hooks/api/category/useGetCategoriesByGroup";
 import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
 
+interface IChooseCategoryModalProps {
+  moveNextStep: () => void;
+  movePrevStep: () => void;
+  setSelectedCategory: Dispatch<SetStateAction<ICategoryDto | undefined>>;
+  selectedCategory: ICategoryDto | undefined;
+  selectedGroupCategory: IGroupCategoryDto | undefined;
+}
 export const ChooseCategoryModal = ({
   moveNextStep,
   movePrevStep,
-  selectedGroup,
   setSelectedCategory,
   selectedCategory,
-}: {
-  moveNextStep: () => void;
-  movePrevStep: () => void;
-  selectedGroup: IGroupDto;
-  setSelectedCategory: Dispatch<SetStateAction<ICategoryDto | undefined>>;
-  selectedCategory: ICategoryDto | undefined;
-}) => {
-  const { data } = useGetCategoriesByGroup(selectedGroup.groupId);
-
+  selectedGroupCategory,
+}: IChooseCategoryModalProps) => {
   const toast = useToastCustom();
 
   const moveNextStepHandler = () => {
@@ -35,7 +34,7 @@ export const ChooseCategoryModal = ({
         <Style.Body>
           <Style.BodyTitle>카테고리 선택</Style.BodyTitle>
           <Style.CategorySelectBox>
-            {data?.categoryList.map((category) => (
+            {selectedGroupCategory?.categoryList.map((category) => (
               <Style.CategoryContainer
                 key={category.categoryId}
                 onClick={() => setSelectedCategory(category)}

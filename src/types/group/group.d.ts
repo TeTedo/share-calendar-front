@@ -19,3 +19,9 @@ interface IGetGroupMemberResponse {
   groupMember: IGroupMemberDto;
   groupMemberCount: number;
 }
+
+interface IGroupCategoryDto {
+  group: IGroupDto;
+  categoryList: ICategoryDto[];
+  groupMemberCount: number;
+}

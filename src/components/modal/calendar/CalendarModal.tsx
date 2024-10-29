@@ -21,6 +21,8 @@ export const CalendarModal = ({
 }) => {
   const [selectedGroup, setSelectedGroup] = useState<IGroupDto>();
   const [selectedCategory, setSelectedCategory] = useState<ICategoryDto>();
+  const [selectedGroupCategory, setSelectedGroupCategory] =
+    useState<IGroupCategoryDto>();
 
   const {
     closeAllModals,
@@ -34,21 +36,21 @@ export const CalendarModal = ({
     children: [
       <ChooseGroupModal
         moveNextStep={() => moveNextStep()}
-        setSelectedGroup={setSelectedGroup}
-        selectedGroup={selectedGroup}
+        setSelectedGroupCategory={setSelectedGroupCategory}
+        selectedGroupCategory={selectedGroupCategory}
       />,
       <ChooseCategoryModal
         moveNextStep={() => moveNextStep()}
         movePrevStep={() => movePrevStep()}
-        selectedGroup={selectedGroup!}
         setSelectedCategory={setSelectedCategory}
         selectedCategory={selectedCategory}
+        selectedGroupCategory={selectedGroupCategory}
       />,
       <AddScheduleModal
         movePrevStep={() => movePrevStep()}
         closeAllModals={() => closeAllModals()}
-        selectedGroup={selectedGroup!}
         selectedCategory={selectedCategory!}
+        selectedGroupCategory={selectedGroupCategory!}
         date={date}
       />,
     ],

@@ -1,23 +1,26 @@
 import React, { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { CalendarTopBarWrapper, Container } from "./CalendarTopBar.style";
 import { Moment } from "moment";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { groupCategoryState } from "state/recoil/groupCategoryState";
 
 interface CalendarTopBarProps {
   currentDate: Moment;
-  groupList: IGroupListDto;
   setCurrentGroup: Dispatch<SetStateAction<IGroupDto | null>>;
 }
 export const CalendarTopBar = ({
   currentDate,
-  groupList,
   setCurrentGroup,
 }: CalendarTopBarProps) => {
+  const groupCategoryList = useRecoilValue(groupCategoryState);
+
   const changeGroupHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-    const selectGroup = groupList.groupList.find(
-      (group) => group.groupId.toString() === event.target.value
+    const selectGroup = groupCategoryList.find(
+      (groupCategory) =>
+        groupCategory.group.groupId.toString() === event.target.value
     )!;
 
-    setCurrentGroup(selectGroup);
+    setCurrentGroup(selectGroup.group);
   };
   return (
     <CalendarTopBarWrapper>
@@ -26,9 +29,12 @@ export const CalendarTopBar = ({
           {currentDate.format("YYYY")}년 {currentDate.format("MM")}월
         </div>
         <select onChange={(e) => changeGroupHandler(e)}>
-          {groupList.groupList.map((group) => (
-            <option key={group.groupId} value={group.groupId}>
-              {group.groupName}
+          {groupCategoryList.map((groupCategory) => (
+            <option
+              key={groupCategory.group.groupId}
+              value={groupCategory.group.groupId}
+            >
+              {groupCategory.group.groupName}
             </option>
           ))}
         </select>

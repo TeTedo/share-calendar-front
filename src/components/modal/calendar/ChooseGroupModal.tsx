@@ -1,23 +1,28 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { ChooseGroupModalStyle } from "./CalendarModal.style";
 
-import { useGetGroups } from "hooks/api/group/useGetGroups";
 import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
+import { useRecoilValue } from "recoil";
+import { groupCategoryState } from "state/recoil/groupCategoryState";
+
+interface IChooseGroupModalProps {
+  moveNextStep: () => void;
+  selectedGroupCategory: IGroupCategoryDto | undefined;
+  setSelectedGroupCategory: Dispatch<
+    SetStateAction<IGroupCategoryDto | undefined>
+  >;
+}
 
 export const ChooseGroupModal = ({
   moveNextStep,
-  setSelectedGroup,
-  selectedGroup,
-}: {
-  moveNextStep: () => void;
-  setSelectedGroup: Dispatch<SetStateAction<IGroupDto | undefined>>;
-  selectedGroup: IGroupDto | undefined;
-}) => {
-  const { isSuccess, data } = useGetGroups();
+  selectedGroupCategory,
+  setSelectedGroupCategory,
+}: IChooseGroupModalProps) => {
+  const groupCategoryList = useRecoilValue(groupCategoryState);
   const toast = useToastCustom();
 
   const moveNextStepHandler = () => {
-    if (!selectedGroup) {
+    if (!selectedGroupCategory) {
       toast("그룹을 선택해야 합니다.", ToastType.ERROR);
       return;
     }
@@ -34,16 +39,22 @@ export const ChooseGroupModal = ({
             그룹 선택
           </ChooseGroupModalStyle.BodyTitle>
           <ChooseGroupModalStyle.TeamSelectBox>
-            {data?.groupList.map((group) => (
+            {groupCategoryList.map((groupCategory) => (
               <ChooseGroupModalStyle.TeamContainer
-                key={group.groupId}
-                onClick={() => setSelectedGroup(group)}
-                $isSelected={selectedGroup?.groupId === group.groupId}
+                key={groupCategory.group.groupId}
+                onClick={() => setSelectedGroupCategory(groupCategory)}
+                $isSelected={
+                  selectedGroupCategory?.group.groupId ===
+                  groupCategory.group.groupId
+                }
               >
-                <img src={group.groupImg} alt={group.groupName} />
+                <img
+                  src={groupCategory.group.groupImg}
+                  alt={groupCategory.group.groupName}
+                />
                 <div>
-                  <div>{group.groupName}</div>
-                  <div>{group.groupName}</div>
+                  <div>{groupCategory.group.groupName}</div>
+                  <div>{groupCategory.group.groupName}</div>
                 </div>
               </ChooseGroupModalStyle.TeamContainer>
             ))}
@@ -51,7 +62,8 @@ export const ChooseGroupModal = ({
           <ChooseGroupModalStyle.BtnWrapper>
             <ChooseGroupModalStyle.NextBtn
               $isSelected={
-                selectedGroup !== undefined && selectedGroup !== null
+                selectedGroupCategory !== undefined &&
+                selectedGroupCategory !== null
               }
               onClick={() => moveNextStepHandler()}
             >

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { Style } from "./AddScheduleModal.style";
 import { ScheduleDatePick } from "components/atom/ScheduleDatePick";
 import { useAddSchedule } from "hooks/api/schedule/useAddSchedule";
@@ -6,19 +6,21 @@ import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
 import { useSetRecoilState } from "recoil";
 import { scheduleState } from "state/recoil/scheduleState";
 
+interface IAddScheduleModalProps {
+  closeAllModals: () => void;
+  movePrevStep: () => void;
+  selectedCategory: ICategoryDto;
+  date: moment.Moment;
+  selectedGroupCategory: IGroupCategoryDto;
+}
+
 export const AddScheduleModal = ({
   closeAllModals,
   movePrevStep,
   selectedCategory,
-  selectedGroup,
   date,
-}: {
-  closeAllModals: () => void;
-  movePrevStep: () => void;
-  selectedGroup: IGroupDto;
-  selectedCategory: ICategoryDto;
-  date: moment.Moment;
-}) => {
+  selectedGroupCategory,
+}: IAddScheduleModalProps) => {
   const [isOn, setIsOn] = useState(true);
   const [scheduleName, setScheduleName] = useState<string>("");
   const [startAt, setStartAt] = useState<moment.Moment>(date.clone());
@@ -33,7 +35,7 @@ export const AddScheduleModal = ({
 
   const addScheduleHandler = () => {
     const data = {
-      groupId: selectedGroup.groupId,
+      groupId: selectedGroupCategory.group.groupId,
       categoryId: selectedCategory.categoryId,
       scheduleName,
       allDayYn: isOn,
@@ -63,7 +65,8 @@ export const AddScheduleModal = ({
         <Style.Header>새로운 일정 추가</Style.Header>
         <Style.Body>
           <Style.BodyTitle>
-            {selectedGroup.groupName} - {selectedCategory.categoryName}
+            {selectedGroupCategory.group.groupName} {" - "}
+            {selectedCategory.categoryName}
           </Style.BodyTitle>
           <Style.InputSchedule
             placeholder="일정을 입력해 주세요."
