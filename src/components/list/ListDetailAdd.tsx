@@ -1,21 +1,23 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Style } from "./ListDetail.style";
 import { useBaseModal } from "hooks/modal/useBaseModal";
 import { AddGroupModal } from "components/modal/group/AddGroupModal";
 import { CancelAddGroupModal } from "components/modal/group/CancelAddGroupModal";
 
-export const ListDetailAdd = () => {
-  const { modal, confirmModal, setIsOpen, handleConfirmation } = useBaseModal({
-    children: [<AddGroupModal />],
-    confirmationSteps: [
-      <CancelAddGroupModal
-        onConfirm={(confirm: boolean) => handleConfirmation(confirm)}
-      />,
-    ],
-    closeCallBack: () => {},
-    isBackgroundBlack: true,
-    isCenter: true,
-  });
+interface IListDetailAdd {}
+export const ListDetailAdd = ({}: IListDetailAdd) => {
+  const { modal, confirmModal, setIsOpen, handleConfirmation, closeAllModals } =
+    useBaseModal({
+      children: [<AddGroupModal closeAllModals={() => closeAllModals()} />],
+      confirmationSteps: [
+        <CancelAddGroupModal
+          onConfirm={(confirm: boolean) => handleConfirmation(confirm)}
+        />,
+      ],
+      closeCallBack: () => {},
+      isBackgroundBlack: true,
+      isCenter: true,
+    });
 
   return (
     <>
