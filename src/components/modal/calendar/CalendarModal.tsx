@@ -8,7 +8,7 @@ import {
 import { ScheduleAtom } from "components/atom/ScheduleAtom";
 import { useBaseModal } from "hooks/modal/useBaseModal";
 import { ChooseGroupModal } from "./ChooseGroupModal";
-import { CancelScheduleModal } from "../CancelScheduleModal";
+import { CancelBaseModal } from "../CancelBaseModal";
 import { ChooseCategoryModal } from "./ChooseCategoryModal";
 import { AddScheduleModal } from "./AddScheduleModal";
 
@@ -55,8 +55,10 @@ export const CalendarModal = ({
       />,
     ],
     confirmationSteps: [
-      <CancelScheduleModal
+      <CancelBaseModal
         onConfirm={(confirm: boolean) => handleConfirmation(confirm)}
+        mainText="작성 중이던 글을 취소하시겠습니까?"
+        subText="작성 중이던 글은 저장되지 않습니다."
       />,
     ],
     closeCallBack: () => {},

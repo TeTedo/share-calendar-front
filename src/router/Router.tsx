@@ -6,12 +6,12 @@ import { ErrorPage } from "pages/error/ErrorPage";
 import { NotFoundPage } from "pages/error/NotFoundPage";
 import { HomePage } from "pages/home/HomePage";
 import { LandingPage } from "pages/landing/LandingPage";
-import { GroupPage } from "pages/Group/GroupPage";
+import { GroupPage } from "pages/group/GroupPage";
 import { Login } from "pages/login/Login";
 import { SettingPage } from "pages/setting/SettingPage";
 import React from "react";
 import { useRoutes } from "react-router-dom";
-import { GroupManagePage } from "pages/Group/GroupManagePage";
+import { GroupManagePage } from "pages/group/GroupManagePage";
 
 export const Router = () => {
   const routes = [

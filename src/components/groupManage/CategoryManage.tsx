@@ -1,19 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import { Style } from "./GroupManage.style";
 import { useBaseModal } from "hooks/modal/useBaseModal";
 import { CategoryNamePickModal } from "components/modal/groupManage/CategoryNamePickModal";
 import { CategoryColorPickModal } from "components/modal/groupManage/CategoryColorPickModal";
+import { CancelBaseModal } from "components/modal/CancelBaseModal";
 
 interface ICategoryManageProps {
   categoryList: ICategoryDto[];
+  groupId: number;
 }
-export const CategoryManage = ({ categoryList }: ICategoryManageProps) => {
-  const { setIsOpen, modal, confirmModal } = useBaseModal({
-    children: [<CategoryNamePickModal />, <CategoryColorPickModal />],
+export const CategoryManage = ({
+  categoryList,
+  groupId,
+}: ICategoryManageProps) => {
+  const [categoryName, setCategoryName] = useState<string>("");
+  const [categoryColorId, setCategoryColorId] = useState<number>(0);
+
+  const {
+    setIsOpen,
+    modal,
+    confirmModal,
+    handleConfirmation,
+    moveNextStep,
+    movePrevStep,
+    closeAllModals,
+  } = useBaseModal({
+    children: [
+      <CategoryNamePickModal
+        moveNextStep={() => moveNextStep()}
+        setCategoryName={setCategoryName}
+      />,
+      <CategoryColorPickModal
+        movePrevStep={() => movePrevStep()}
+        closeAllModals={() => closeAllModals()}
+        setCategoryColorId={setCategoryColorId}
+        categoryColorId={categoryColorId}
+        categoryName={categoryName}
+        groupId={groupId}
+      />,
+    ],
     closeCallBack: () => {},
     isBackgroundBlack: true,
     isCenter: true,
-    confirmationSteps: [],
+    confirmationSteps: [
+      <CancelBaseModal
+        onConfirm={(confirm: boolean) => handleConfirmation(confirm)}
+        mainText="카테고리 추가를 취소하시겠습니까?"
+        subText=""
+      />,
+    ],
   });
   return (
     <>

@@ -3,6 +3,7 @@ import { Style } from "./GroupListDetail.style";
 import { useBaseModal } from "hooks/modal/useBaseModal";
 import { AddGroupModal } from "components/modal/group/AddGroupModal";
 import { CancelAddGroupModal } from "components/modal/group/CancelAddGroupModal";
+import { CancelBaseModal } from "components/modal/CancelBaseModal";
 
 interface IGroupListDetailAddProps {}
 
@@ -11,8 +12,10 @@ export const GroupListDetailAdd = ({}: IGroupListDetailAddProps) => {
     useBaseModal({
       children: [<AddGroupModal closeAllModals={() => closeAllModals()} />],
       confirmationSteps: [
-        <CancelAddGroupModal
+        <CancelBaseModal
           onConfirm={(confirm: boolean) => handleConfirmation(confirm)}
+          mainText="그룹 생성을 취소하시겠습니까?"
+          subText=""
         />,
       ],
       closeCallBack: () => {},

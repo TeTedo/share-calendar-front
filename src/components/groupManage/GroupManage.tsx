@@ -82,7 +82,10 @@ export const GroupManage = () => {
 
         {/* 카테고리 세팅 */}
         {!isMemberSetting && (
-          <CategoryManage categoryList={state.categoryList} />
+          <CategoryManage
+            categoryList={state.categoryList}
+            groupId={state.group.groupId}
+          />
         )}
       </Style.SettingWrapper>
     </Style.Wrapper>

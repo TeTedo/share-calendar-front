@@ -21,9 +21,7 @@ export const BaseModalWrapper = styled.div<{
   z-index: 999;
 `;
 
-export const BaseModalContainer = styled.div`
-  position: relative;
-`;
+export const BaseModalContainer = styled.div``;
 
 export const Style = {
   Wrapper: styled(CalendarModalBaseWrapper)`

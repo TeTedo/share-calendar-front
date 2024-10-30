@@ -9,3 +9,7 @@ interface IAddGroupResponse {
 interface IGetAllGroupMemberResponse {
   groupMemberList: IGroupMemberDto[];
 }
+
+interface IAddCategoryResponse {
+  category: ICategoryDto;
+}
