@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Style } from "./GroupManage.style";
 import { useGetAllGroupMembers } from "hooks/api/group/useGetAllGroupMembers";
+import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
+import { PAGE_URI } from "constants/pageUri";
+import { CategoryManage } from "./CategoryManage";
+import { GroupMemberManage } from "./GroupMemberManage";
 
 export const GroupManage = () => {
   const location = useLocation();
+  const nav = useNavigate();
+  const toast = useToastCustom();
   const state: IGroupCategoryDto = location.state;
+
+  if (state === null) {
+    toast("그룹을 다시 확인해주세요.", ToastType.ERROR);
+    nav(PAGE_URI.GROUP);
+  }
 
   const [isMemberSetting, setIsMemberSetting] = useState<boolean>(true);
 
@@ -48,13 +59,13 @@ export const GroupManage = () => {
           onClick={() => setIsMemberSetting(true)}
           $isSelected={isMemberSetting}
         >
-          그룹원 설정
+          그룹원
         </Style.SettingBtn>
         <Style.SettingBtn
           onClick={() => setIsMemberSetting(false)}
           $isSelected={!isMemberSetting}
         >
-          카테고리 설정
+          카테고리
         </Style.SettingBtn>
       </Style.ChooseSettingWrapper>
 
@@ -62,78 +73,16 @@ export const GroupManage = () => {
       <Style.SettingWrapper>
         {/* 그룹원 세팅 */}
         {/* <Style.SettingTitle>그룹원 설정</Style.SettingTitle> */}
-        {isMemberSetting && (
-          <Style.GroupSetting>
-            <Style.DetailContainer>
-              <div>
-                <div>그룹원({state.groupMemberCount}명)</div>
-                <div></div>
-              </div>
-              <div></div>
-            </Style.DetailContainer>
-
-            {data?.groupMemberList.map((groupMember) => (
-              <Style.GroupSettingDetail>
-                <Style.GroupLeft>
-                  <img src={groupMember.groupProfileImg} alt="프로필" />
-                  <div>{groupMember.groupNickname}</div>
-                </Style.GroupLeft>
-                <Style.GroupRight>
-                  <img src="/icon/detail_setting_icon.svg" alt="설정" />
-                </Style.GroupRight>
-              </Style.GroupSettingDetail>
-            ))}
-
-            {/* 그룹원 추가 */}
-            <Style.GroupSettingDetail>
-              <Style.GroupLeft>
-                <img src="/icon/empty_profile_icon.svg" alt="프로필" />
-                <div>
-                  멤버 추가{" "}
-                  <img
-                    src="/icon/group_plus_icon.svg"
-                    alt=""
-                    style={{ width: "12px", height: "12px" }}
-                  />
-                </div>
-              </Style.GroupLeft>
-              <Style.GroupRight></Style.GroupRight>
-            </Style.GroupSettingDetail>
-          </Style.GroupSetting>
+        {isMemberSetting && data && (
+          <GroupMemberManage
+            groupMemberCount={state.groupMemberCount}
+            groupMemberList={data.groupMemberList}
+          />
         )}
 
         {/* 카테고리 세팅 */}
-        {/* <Style.SettingTitle>카테고리 설정</Style.SettingTitle> */}
         {!isMemberSetting && (
-          <Style.CategorySetting>
-            {state.categoryList.map((category) => (
-              <Style.CategorySettingDetail>
-                <Style.CategoryLeft $mainColor={category.categoryMainColor}>
-                  <div></div>
-                  <div>{category.categoryName}</div>
-                </Style.CategoryLeft>
-                <Style.CategoryRight>
-                  <img src="/icon/detail_setting_icon.svg" alt="설정" />
-                </Style.CategoryRight>
-              </Style.CategorySettingDetail>
-            ))}
-
-            {/* 카테고리 추가 */}
-            <Style.CategorySettingDetail>
-              <Style.CategoryLeft>
-                <div></div>
-                <div>
-                  카테고리 추가{" "}
-                  <img
-                    src="/icon/group_plus_icon.svg"
-                    alt=""
-                    style={{ width: "12px", height: "12px" }}
-                  />
-                </div>
-              </Style.CategoryLeft>
-              <Style.CategoryRight></Style.CategoryRight>
-            </Style.CategorySettingDetail>
-          </Style.CategorySetting>
+          <CategoryManage categoryList={state.categoryList} />
         )}
       </Style.SettingWrapper>
     </Style.Wrapper>

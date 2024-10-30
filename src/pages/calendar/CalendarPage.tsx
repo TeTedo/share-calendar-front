@@ -32,6 +32,7 @@ export const CalendarPage = () => {
   }, [successGetGroupMember, groupMemberData]);
 
   if (!successGetGroupMember) return <></>;
+
   return (
     <CalendarPageWrapper>
       <CalendarTopBar

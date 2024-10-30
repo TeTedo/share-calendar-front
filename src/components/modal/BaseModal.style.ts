@@ -16,4 +16,6 @@ export const BaseModalWrapper = styled.div<{
     props.$isBackgroundBlack ? "rgba(0,0,0,0.3)" : "transparent"};
   z-index: 999;
 `;
-export const BaseModalContainer = styled.div``;
+export const BaseModalContainer = styled.div`
+  position: relative;
+`;
