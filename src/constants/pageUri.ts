@@ -3,20 +3,23 @@ const ROOT = "/";
 const LANDING = "/landing";
 const HOME = "/home";
 const CALENDAR = "/calendar";
-const LIST = "/list";
+const GROUP = "/group";
 const SETTING = "/setting";
 const LOGIN = "/login/:platform";
 const NOT_FOUND = "/*";
 const ERROR = "/error";
 
+const GROUP_MANAGE = "/group/manage";
+
 export const PAGE_URI = {
   HOME,
   CALENDAR,
-  LIST,
+  GROUP,
   SETTING,
   LANDING,
   ROOT,
   LOGIN,
   NOT_FOUND,
   ERROR,
+  GROUP_MANAGE,
 };

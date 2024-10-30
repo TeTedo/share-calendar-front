@@ -5,3 +5,7 @@ interface IGetGroupWithCategories {
 interface IAddGroupResponse {
   groupCategory: IGroupCategoryDto;
 }
+
+interface IGetAllGroupMemberResponse {
+  groupMemberList: IGroupMemberDto[];
+}

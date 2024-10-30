@@ -1,11 +1,12 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { Style } from "./ListDetail.style";
+import { Style } from "./GroupListDetail.style";
 import { useBaseModal } from "hooks/modal/useBaseModal";
 import { AddGroupModal } from "components/modal/group/AddGroupModal";
 import { CancelAddGroupModal } from "components/modal/group/CancelAddGroupModal";
 
-interface IListDetailAdd {}
-export const ListDetailAdd = ({}: IListDetailAdd) => {
+interface IGroupListDetailAddProps {}
+
+export const GroupListDetailAdd = ({}: IGroupListDetailAddProps) => {
   const { modal, confirmModal, setIsOpen, handleConfirmation, closeAllModals } =
     useBaseModal({
       children: [<AddGroupModal closeAllModals={() => closeAllModals()} />],

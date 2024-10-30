@@ -21,4 +21,17 @@ export const Style = {
       }
     }
   `,
+
+  GoBackContainer: styled.div`
+    display: flex;
+    font-size: 14px;
+    gap: 10px;
+    align-items: center;
+    color: #777777;
+
+    & > img {
+      width: 10px;
+      height: 18px;
+    }
+  `,
 };

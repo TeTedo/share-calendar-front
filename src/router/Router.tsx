@@ -6,11 +6,12 @@ import { ErrorPage } from "pages/error/ErrorPage";
 import { NotFoundPage } from "pages/error/NotFoundPage";
 import { HomePage } from "pages/home/HomePage";
 import { LandingPage } from "pages/landing/LandingPage";
-import { ListPage } from "pages/list/ListPage";
+import { GroupPage } from "pages/Group/GroupPage";
 import { Login } from "pages/login/Login";
 import { SettingPage } from "pages/setting/SettingPage";
 import React from "react";
 import { useRoutes } from "react-router-dom";
+import { GroupManagePage } from "pages/Group/GroupManagePage";
 
 export const Router = () => {
   const routes = [
@@ -42,7 +43,12 @@ export const Router = () => {
     {
       path: PAGE_URI.ROOT,
       element: <MobileLayout />,
-      children: [{ path: PAGE_URI.LIST, element: <ListPage /> }],
+      children: [{ path: PAGE_URI.GROUP, element: <GroupPage /> }],
+    },
+    {
+      path: PAGE_URI.ROOT,
+      element: <MobileLayout />,
+      children: [{ path: PAGE_URI.GROUP_MANAGE, element: <GroupManagePage /> }],
     },
     {
       path: PAGE_URI.ROOT,

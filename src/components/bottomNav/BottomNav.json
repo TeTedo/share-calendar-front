@@ -24,7 +24,7 @@
       "iconUrl": "/icon/list_icon.svg",
       "selectedIconUrl": "/icon/selected_list_icon.svg",
       "iconAlt": "리스트 아이콘",
-      "navUrl": "list",
+      "navUrl": "group",
       "index": 3
     },
     {

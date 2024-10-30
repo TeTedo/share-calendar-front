@@ -1,7 +1,7 @@
 import React from "react";
 import { Style } from "./GroupList.style";
-import { ListDetail } from "./ListDetail";
-import { ListDetailAdd } from "./ListDetailAdd";
+import { GroupListDetail } from "./GroupListDetail";
+import { GroupListDetailAdd } from "./GroupListDetailAdd";
 import { useRecoilState } from "recoil";
 import { groupCategoryState } from "state/recoil/groupCategoryState";
 
@@ -12,9 +12,9 @@ export const GroupList = () => {
   return (
     <Style.Wrapper>
       {groupCategoryList.map((groupCategory) => (
-        <ListDetail groupCategory={groupCategory} />
+        <GroupListDetail groupCategory={groupCategory} />
       ))}
-      <ListDetailAdd />
+      <GroupListDetailAdd />
     </Style.Wrapper>
   );
 };
