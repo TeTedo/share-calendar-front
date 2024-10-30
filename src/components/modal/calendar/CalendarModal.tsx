@@ -8,7 +8,7 @@ import {
 import { ScheduleAtom } from "components/atom/ScheduleAtom";
 import { useBaseModal } from "hooks/modal/useBaseModal";
 import { ChooseGroupModal } from "./ChooseGroupModal";
-import { CancelScheduleModal } from "./CancelScheduleModal";
+import { CancelScheduleModal } from "../CancelScheduleModal";
 import { ChooseCategoryModal } from "./ChooseCategoryModal";
 import { AddScheduleModal } from "./AddScheduleModal";
 
