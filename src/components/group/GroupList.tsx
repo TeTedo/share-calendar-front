@@ -12,7 +12,7 @@ export const GroupList = () => {
   return (
     <Style.Wrapper>
       {groupCategoryList.map((groupCategory) => (
-        <GroupListDetail groupCategory={groupCategory} />
+        <GroupListDetail groupCategory={groupCategory} key={groupCategory.group.groupId}/>
       ))}
       <GroupListDetailAdd />
     </Style.Wrapper>

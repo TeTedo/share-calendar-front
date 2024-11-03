@@ -87,6 +87,7 @@ export const CalendarModal = ({
             <ScheduleList.Wrapper>
               {scheduleList.map((schedule) => (
                 <ScheduleAtom
+                key={schedule.scheduleId}
                   fontSize="10px"
                   height="25px"
                   isTextCenter={false}

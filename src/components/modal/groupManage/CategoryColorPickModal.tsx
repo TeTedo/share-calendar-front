@@ -32,7 +32,6 @@ export const CategoryColorPickModal = ({
     setGroupCategory(addCategoryToGroup(groupId, newCategory));
   };
 
-  console.log(groupCategory)
   const addCategoryHandler = () => {
     const category = categoryJson.list.find((v) => v.id === categoryColorId);
 
