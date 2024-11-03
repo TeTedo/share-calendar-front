@@ -5,7 +5,7 @@ import categoryJson from "./categoryColor.json";
 import { useAddCategory } from "hooks/api/category/useAddCategory";
 import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
 import { useRecoilState } from "recoil";
-import { groupCategoryState } from "state/recoil/groupCategoryState";
+import { addCategoryToGroup, groupCategoryState } from "state/recoil/groupCategoryState";
 
 interface ICategoryColorPickModalProps {
   movePrevStep: () => void;
@@ -26,7 +26,12 @@ export const CategoryColorPickModal = ({
 }: ICategoryColorPickModalProps) => {
   const toast = useToastCustom();
   const { mutate } = useAddCategory(groupId);
-  const [groupCategory, setGroupCategroy] = useRecoilState(groupCategoryState);
+  const [groupCategory, setGroupCategory] = useRecoilState(groupCategoryState);
+
+  const handleAddCategory = (groupId: number, newCategory: ICategoryDto) => {
+    setGroupCategory(addCategoryToGroup(groupId, newCategory));
+  };
+
   const addCategoryHandler = () => {
     const category = categoryJson.list.find((v) => v.id === categoryColorId);
 
@@ -43,6 +48,7 @@ export const CategoryColorPickModal = ({
     mutate(data, {
       onSuccess: (response) => {
         toast("카테고리 생성 완료", ToastType.SUCCESS);
+        handleAddCategory(groupId, response.category)
         closeAllModals();
       },
       onError: (e) => {

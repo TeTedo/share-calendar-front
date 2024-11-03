@@ -6,28 +6,41 @@ import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
 import { PAGE_URI } from "constants/pageUri";
 import { CategoryManage } from "./CategoryManage";
 import { GroupMemberManage } from "./GroupMemberManage";
+import { groupCategoryState } from "state/recoil/groupCategoryState";
+import { useRecoilValue } from "recoil";
 
 export const GroupManage = () => {
   const location = useLocation();
   const nav = useNavigate();
   const toast = useToastCustom();
-  const state: IGroupCategoryDto = location.state;
+  const initialState: IGroupCategoryDto = location.state;
 
-  if (state === null) {
+  if (initialState === null) {
     toast("그룹을 다시 확인해주세요.", ToastType.ERROR);
     nav(PAGE_URI.GROUP);
   }
 
+  const [groupData, setGroupData] = useState<IGroupCategoryDto>(initialState);
+  const { data } = useGetAllGroupMembers(groupData.group);
   const [isMemberSetting, setIsMemberSetting] = useState<boolean>(true);
 
-  const { data } = useGetAllGroupMembers(state.group);
+  const recoilGroupData = useRecoilValue(groupCategoryState);
+  
+  useEffect(() => {
+    const updatedGroupData = recoilGroupData.find(
+      (group) => group.group.groupId === groupData.group.groupId
+    );
+    if (updatedGroupData) {
+      setGroupData(updatedGroupData);
+    }
+  }, [recoilGroupData, groupData]);
 
   return (
     <Style.Wrapper>
       {/* 상단 이미지 부분 */}
       <Style.TopContainer>
         <Style.ImgContainer>
-          <img src={state.group.groupImg} alt="그룹 프로필" />
+          <img src={groupData.group.groupImg} alt="그룹 프로필" />
           <img src="/icon/modify_img_icon.svg" alt="수정" />
         </Style.ImgContainer>
       </Style.TopContainer>
@@ -37,17 +50,17 @@ export const GroupManage = () => {
         <Style.DetailContainer $backgroundColor="#f4f4f4">
           <div>
             <div>그룹명</div>
-            <div>{state.group.groupName}</div>
+            <div>{groupData.group.groupName}</div>
           </div>
           <div>
             <div>그룹 코드</div>
-            <div>{state.group.groupUuid}</div>
+            <div>{groupData.group.groupUuid}</div>
           </div>
         </Style.DetailContainer>
         <Style.DetailContainer>
           <div>
             <div>소개</div>
-            <div>{state.group.groupName}</div>
+            <div>{groupData.group.groupName}</div>
           </div>
           <div></div>
         </Style.DetailContainer>
@@ -75,7 +88,7 @@ export const GroupManage = () => {
         {/* <Style.SettingTitle>그룹원 설정</Style.SettingTitle> */}
         {isMemberSetting && data && (
           <GroupMemberManage
-            groupMemberCount={state.groupMemberCount}
+            groupMemberCount={groupData.groupMemberCount}
             groupMemberList={data.groupMemberList}
           />
         )}
@@ -83,8 +96,8 @@ export const GroupManage = () => {
         {/* 카테고리 세팅 */}
         {!isMemberSetting && (
           <CategoryManage
-            categoryList={state.categoryList}
-            groupId={state.group.groupId}
+            categoryList={groupData.categoryList}
+            groupId={groupData.group.groupId}
           />
         )}
       </Style.SettingWrapper>

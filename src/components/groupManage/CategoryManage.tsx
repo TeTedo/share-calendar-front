@@ -56,7 +56,7 @@ export const CategoryManage = ({
       {confirmModal}
       <Style.CategorySetting>
         {categoryList.map((category) => (
-          <Style.CategorySettingDetail>
+          <Style.CategorySettingDetail key={category.categoryId}>
             <Style.CategoryLeft $mainColor={category.categoryMainColor}>
               <div></div>
               <div>{category.categoryName}</div>
