@@ -55,6 +55,9 @@ function AppContent() {
           onSuccess: (response) => {
             setTokenRecoil(response.token);
             setMemberRecoil(response.member);
+
+            // TODO 로그인 성공시 그룹 초대가 있는 경우 db 저장 후 그룹페이지 이동
+            
           },
           onError: () => {
             window.location.href = "/landing";
