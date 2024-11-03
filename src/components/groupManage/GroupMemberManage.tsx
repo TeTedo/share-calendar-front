@@ -19,8 +19,8 @@ export const GroupMemberManage = ({
         <div></div>
       </Style.DetailContainer>
 
-      {groupMemberList.map((groupMember) => (
-        <Style.GroupSettingDetail>
+      {groupMemberList.map((groupMember, idx) => (
+        <Style.GroupSettingDetail key={idx}>
           <Style.GroupLeft>
             <img src={groupMember.groupProfileImg} alt="프로필" />
             <div>{groupMember.groupNickname}</div>
