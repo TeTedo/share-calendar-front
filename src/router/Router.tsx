@@ -12,6 +12,7 @@ import { SettingPage } from "pages/setting/SettingPage";
 import React from "react";
 import { useRoutes } from "react-router-dom";
 import { GroupManagePage } from "pages/group/GroupManagePage";
+import { Invite } from "pages/Invite/Invite";
 
 export const Router = () => {
   const routes = [
@@ -60,6 +61,12 @@ export const Router = () => {
       path: PAGE_URI.ROOT,
       element: <EmptyMobileLayout />,
       children: [{ path: PAGE_URI.LOGIN, element: <Login /> }],
+    },
+
+    {
+      path: PAGE_URI.ROOT,
+      element: <EmptyMobileLayout />,
+      children: [{ path: PAGE_URI.INVITATION, element: <Invite /> }],
     },
   ];
 

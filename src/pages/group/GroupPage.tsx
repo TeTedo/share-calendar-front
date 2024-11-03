@@ -4,6 +4,8 @@ import { GroupListTop } from "components/group/GroupListTop";
 import React from "react";
 
 export const GroupPage = () => {
+
+
   return (
     <div>
       <GroupListTop name="그룹 목록" />
