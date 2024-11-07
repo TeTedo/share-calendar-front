@@ -53,7 +53,7 @@ export const Calendar = ({
           date={day}
           color={
             day.isSame(currentDate, "month")
-              ? day.isSame(currentDate, "day")
+              ? day.isSame(moment(), "day")
                 ? "blue"
                 : "black"
               : "#ccc"

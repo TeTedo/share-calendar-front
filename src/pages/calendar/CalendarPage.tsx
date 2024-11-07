@@ -36,6 +36,7 @@ export const CalendarPage = () => {
   return (
     <CalendarPageWrapper>
       <CalendarTopBar
+        setCurrentDate={setCurrentDate}
         currentDate={currentDate}
         setCurrentGroup={setCurrentGroup}
       />
