@@ -7,6 +7,7 @@ interface IGroupDto {
   groupUuid: string;
   groupName: string;
   groupImg: string;
+  groupType: string;
 }
 
 interface IGroupMemberDto {

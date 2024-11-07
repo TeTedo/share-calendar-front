@@ -25,7 +25,7 @@ export const GroupManage = () => {
   const [isMemberSetting, setIsMemberSetting] = useState<boolean>(true);
 
   const recoilGroupData = useRecoilValue(groupCategoryState);
-  
+
   useEffect(() => {
     const updatedGroupData = recoilGroupData.find(
       (group) => group.group.groupId === groupData.group.groupId
@@ -88,7 +88,7 @@ export const GroupManage = () => {
         {/* <Style.SettingTitle>그룹원 설정</Style.SettingTitle> */}
         {isMemberSetting && data && (
           <GroupMemberManage
-            groupMemberCount={groupData.groupMemberCount}
+            groupData={groupData}
             groupMemberList={data.groupMemberList}
           />
         )}

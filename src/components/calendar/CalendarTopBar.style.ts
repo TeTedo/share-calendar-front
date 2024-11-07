@@ -18,3 +18,13 @@ export const Container = styled.div`
     font-size: 16px;
   }
 `;
+
+export const MonthSelect = styled.div`
+  display: flex;
+  gap: 15px;
+  font-size: 15px;
+
+  & > div:nth-child(2n + 1) {
+    cursor: pointer;
+  }
+`;
