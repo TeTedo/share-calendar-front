@@ -1,0 +1,3 @@
+interface IApplyGroupResponse {
+  msg: string;
+}

@@ -8,7 +8,7 @@ const SETTING = "/setting";
 const LOGIN = "/login/:platform";
 const NOT_FOUND = "/*";
 const ERROR = "/error";
-const INVITATION = "/invite/:groupCode"
+const INVITATION = "/invite/:groupCode/:groupName";
 
 const GROUP_MANAGE = "/group/manage";
 
@@ -23,5 +23,5 @@ export const PAGE_URI = {
   NOT_FOUND,
   ERROR,
   GROUP_MANAGE,
-  INVITATION
+  INVITATION,
 };
