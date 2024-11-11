@@ -11,9 +11,17 @@ export const GroupList = () => {
 
   return (
     <Style.Wrapper>
-      {groupCategoryList.map((groupCategory) => (
-        <GroupListDetail groupCategory={groupCategory} key={groupCategory.group.groupId}/>
-      ))}
+      <Style.ListContainer>
+        {/* 그룹 리스트 */}
+        {groupCategoryList.map((groupCategory) => (
+          <GroupListDetail
+            groupCategory={groupCategory}
+            key={groupCategory.group.groupId}
+          />
+        ))}
+      </Style.ListContainer>
+
+      {/* 그룹 추가버튼 */}
       <GroupListDetailAdd />
     </Style.Wrapper>
   );

@@ -10,14 +10,13 @@ interface IAddGroupModalProps {
 }
 export const AddGroupModal = ({ closeAllModals }: IAddGroupModalProps) => {
   const [groupName, setGroupName] = useState<string>("");
-  const [groupImg, setGroupImg] = useState<string>("");
 
   const setGroupCategoryList = useSetRecoilState(groupCategoryState);
   const { mutate } = useAddGroup();
   const toast = useToastCustom();
 
   const addGroupHandler = () => {
-    const data = { groupName, groupImg };
+    const data = { groupName };
 
     mutate(data, {
       onSuccess: (response) => {
@@ -32,14 +31,10 @@ export const AddGroupModal = ({ closeAllModals }: IAddGroupModalProps) => {
   return (
     <Style.Wrapper>
       <div>
-        <div>그룹 대표 이미지</div>
-        <input type="file" />
-      </div>
-      <div>
         <div>그룹 이름</div>
         <input type="text" onChange={(e) => setGroupName(e.target.value)} />
       </div>
-      <div onClick={() => addGroupHandler()}>생성</div>
+      <Style.AddBtn onClick={() => addGroupHandler()}>생성</Style.AddBtn>
     </Style.Wrapper>
   );
 };
