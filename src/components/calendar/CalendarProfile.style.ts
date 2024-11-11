@@ -27,25 +27,10 @@ export const Style = {
     align-items: center;
     gap: 15px;
 
-    & > div:first-child {
-      width: 80px;
-      height: 30px;
-      font-size: 10px;
-      border-radius: 5px;
-      background-color: #e8e8e8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  `,
-
-  GroupCountContainer: styled.div`
-    display: flex;
-    gap: 2px;
-    align-items: center;
     & > img {
-      width: 14px;
-      height: 14px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
     }
   `,
 };

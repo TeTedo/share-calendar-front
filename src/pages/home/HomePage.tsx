@@ -7,7 +7,11 @@ export const HomePage = () => {
 
   return (
     <div>
-      <img src={memberRecoilValue.profileImg} alt="" />
+      <img
+        src={memberRecoilValue.profileImg}
+        alt=""
+        style={{ width: "30px", height: "30px" }}
+      />
       <div>회원코드 : {memberRecoilValue.uuid}</div>
       <div>{memberRecoilValue.name}님 안녕하세요!</div>
     </div>
