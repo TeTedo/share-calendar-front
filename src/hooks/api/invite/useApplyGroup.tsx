@@ -2,13 +2,13 @@ import React from "react";
 import { useAxiosCustom } from "../useAxiosCustom";
 import { useMutation } from "@tanstack/react-query";
 
-export const useEnterByInvite = () => {
+export const useApplyGroup = (inviteCode: string) => {
   const axios = useAxiosCustom();
 
-  const requestUri = "/api/v1/group";
+  const requestUri = `/api/v1/group-application/${inviteCode}`;
 
-  return useMutation<IAddGroupResponse, Error, IAddGroupRequest>({
-    mutationFn: async (data: IAddGroupRequest) =>
+  return useMutation<IApplyGroupResponse, Error, {}>({
+    mutationFn: async (data: {}) =>
       await axios.post(requestUri, data).then((response) => response.data),
   });
 };

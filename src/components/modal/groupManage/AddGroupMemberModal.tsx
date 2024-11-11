@@ -3,13 +3,19 @@ import { Style } from "./AddGroupMemberModal.style";
 import { useCopyCustom } from "hooks/useCopyCustom";
 
 interface IGroupMemberModalProps {
-  groupCode: string;
+  group: IGroupDto;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
-export const AddGroupMemberModal = ({ groupCode }: IGroupMemberModalProps) => {
+export const AddGroupMemberModal = ({
+  group,
+  setIsOpen,
+}: IGroupMemberModalProps) => {
   const copy = useCopyCustom();
 
-  const inviteUrl = `${process.env.REACT_APP_INVITE_URL}/${groupCode}`;
+  const groupUuid = encodeURI(group.groupUuid);
+  const groupName = encodeURI(group.groupName);
+  const inviteUrl = `${process.env.REACT_APP_INVITE_URL}/${groupUuid}/${groupName}`;
 
   return (
     <Style.Wrapper>
@@ -18,7 +24,10 @@ export const AddGroupMemberModal = ({ groupCode }: IGroupMemberModalProps) => {
         <Style.LinkContainer>
           <Style.LinkRow>{inviteUrl}</Style.LinkRow>
           <Style.LinkBtn
-            onClick={() => copy(inviteUrl, "친구 초대 준비 완료!")}
+            onClick={() => {
+              copy(inviteUrl, "친구 초대 준비 완료!");
+              setIsOpen(false);
+            }}
           >
             복사하기
           </Style.LinkBtn>

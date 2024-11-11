@@ -22,7 +22,7 @@ export const GroupManage = () => {
 
   const [groupData, setGroupData] = useState<IGroupCategoryDto>(initialState);
   const { data } = useGetAllGroupMembers(groupData.group);
-  const [isMemberSetting, setIsMemberSetting] = useState<boolean>(true);
+  const [selectedCategory, setSelectedCategory] = useState<number>(0);
 
   const recoilGroupData = useRecoilValue(groupCategoryState);
 
@@ -69,16 +69,22 @@ export const GroupManage = () => {
       {/* 세팅 선택 */}
       <Style.ChooseSettingWrapper>
         <Style.SettingBtn
-          onClick={() => setIsMemberSetting(true)}
-          $isSelected={isMemberSetting}
+          onClick={() => setSelectedCategory(0)}
+          $isSelected={selectedCategory === 0}
         >
           그룹원
         </Style.SettingBtn>
         <Style.SettingBtn
-          onClick={() => setIsMemberSetting(false)}
-          $isSelected={!isMemberSetting}
+          onClick={() => setSelectedCategory(1)}
+          $isSelected={selectedCategory === 1}
         >
           카테고리
+        </Style.SettingBtn>
+        <Style.SettingBtn
+          onClick={() => setSelectedCategory(2)}
+          $isSelected={selectedCategory === 2}
+        >
+          가입 신청
         </Style.SettingBtn>
       </Style.ChooseSettingWrapper>
 
@@ -86,7 +92,7 @@ export const GroupManage = () => {
       <Style.SettingWrapper>
         {/* 그룹원 세팅 */}
         {/* <Style.SettingTitle>그룹원 설정</Style.SettingTitle> */}
-        {isMemberSetting && data && (
+        {selectedCategory === 0 && data && (
           <GroupMemberManage
             groupData={groupData}
             groupMemberList={data.groupMemberList}
@@ -94,7 +100,15 @@ export const GroupManage = () => {
         )}
 
         {/* 카테고리 세팅 */}
-        {!isMemberSetting && (
+        {selectedCategory === 1 && (
+          <CategoryManage
+            categoryList={groupData.categoryList}
+            groupId={groupData.group.groupId}
+          />
+        )}
+
+        {/* 그룹 가입 신청 관리*/}
+        {selectedCategory === 2 && (
           <CategoryManage
             categoryList={groupData.categoryList}
             groupId={groupData.group.groupId}

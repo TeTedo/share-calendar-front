@@ -12,11 +12,17 @@ export const GroupMemberManage = ({
   groupData,
 }: IGroupMemberManageProps) => {
   const { modal, setIsOpen } = useBaseModal({
-    children: [<AddGroupMemberModal groupCode={groupData.group.groupUuid} />],
+    children: [
+      <AddGroupMemberModal
+        group={groupData.group}
+        setIsOpen={(isOpen: boolean) => setIsOpen(isOpen)}
+      />,
+    ],
     closeCallBack: () => {},
     isBackgroundBlack: true,
     isCenter: true,
   });
+
   return (
     <>
       {modal}
@@ -42,20 +48,22 @@ export const GroupMemberManage = ({
         ))}
 
         {/* 그룹원 추가 */}
-        <Style.GroupSettingDetail onClick={() => setIsOpen(true)}>
-          <Style.GroupLeft>
-            <img src="/icon/empty_profile_icon.svg" alt="프로필" />
-            <div>
-              멤버 추가{" "}
-              <img
-                src="/icon/group_plus_icon.svg"
-                alt=""
-                style={{ width: "12px", height: "12px" }}
-              />
-            </div>
-          </Style.GroupLeft>
-          <Style.GroupRight></Style.GroupRight>
-        </Style.GroupSettingDetail>
+        {groupData.group.groupType !== "DEFAULT" && (
+          <Style.GroupSettingDetail onClick={() => setIsOpen(true)}>
+            <Style.GroupLeft>
+              <img src="/icon/empty_profile_icon.svg" alt="프로필" />
+              <div>
+                멤버 추가
+                <img
+                  src="/icon/group_plus_icon.svg"
+                  alt=""
+                  style={{ width: "12px", height: "12px" }}
+                />
+              </div>
+            </Style.GroupLeft>
+            <Style.GroupRight></Style.GroupRight>
+          </Style.GroupSettingDetail>
+        )}
       </Style.GroupSetting>
     </>
   );

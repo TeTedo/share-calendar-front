@@ -25,7 +25,10 @@ export const Style = {
     gap: 20px;
     align-items: center;
   `,
-  LinkRow: styled.div``,
+  LinkRow: styled.div`
+    max-width: 300px;
+    overflow-x: scroll;
+  `,
   LinkBtn: styled.div`
     display: flex;
     justify-content: center;
