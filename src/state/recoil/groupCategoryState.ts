@@ -5,8 +5,11 @@ export const groupCategoryState = atom<IGroupCategoryDto[]>({
   default: [],
 });
 
-export const addCategoryToGroup = (groupId: number, newCategory: ICategoryDto) => {
-  return (currentState: IGroupCategoryDto[]) => 
+export const addCategoryToGroup = (
+  groupId: number,
+  newCategory: ICategoryDto
+) => {
+  return (currentState: IGroupCategoryDto[]) =>
     currentState.map((groupCategory) => {
       if (groupCategory.group.groupId === groupId) {
         return {

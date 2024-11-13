@@ -3,7 +3,7 @@ import React, { ReactNode, useState } from "react";
 
 interface UseBaseModalProps {
   children: ReactNode[];
-  closeCallBack: () => void;
+  closeCallBack?: () => void;
   isBackgroundBlack: boolean;
   isCenter: boolean;
   confirmationSteps?: ReactNode[];
@@ -25,7 +25,7 @@ export const useBaseModal = ({
     setIsConfirmOpen(false);
     setCurrentConfirmStep(0);
     setCurrentStep(0);
-    closeCallBack(); // Trigger any additional logic when closing
+    if (closeCallBack) closeCallBack(); // Trigger any additional logic when closing
   };
 
   const closeModal = () => {
@@ -34,7 +34,7 @@ export const useBaseModal = ({
     } else {
       setIsOpen(false);
       setCurrentStep(0);
-      closeCallBack();
+      if (closeCallBack) closeCallBack();
     }
   };
 
@@ -63,7 +63,7 @@ export const useBaseModal = ({
         setIsConfirmOpen(false);
         setCurrentConfirmStep(0); // Reset the confirmation steps
         setCurrentStep(0);
-        closeCallBack();
+        if (closeCallBack) closeCallBack();
       }
     } else {
       setIsConfirmOpen(false);

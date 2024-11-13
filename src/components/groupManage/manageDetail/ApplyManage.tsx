@@ -1,5 +1,5 @@
 import React from "react";
-import { Style } from "./GroupManage.style";
+import { Style } from "../GroupManage.style";
 import { useGetGroupApplication } from "hooks/api/apply/useGetGroupApplication";
 import { useBaseModal } from "hooks/modal/useBaseModal";
 import { useProcessApply } from "hooks/api/apply/useProcessApply";

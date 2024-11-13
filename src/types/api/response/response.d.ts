@@ -17,3 +17,7 @@ interface IAddCategoryResponse {
 interface IProcessApplyResponse {
   groupApplication: IGroupApplicationDto;
 }
+
+interface IChangeGroupImgResponse {
+  group: IGroupDto;
+}

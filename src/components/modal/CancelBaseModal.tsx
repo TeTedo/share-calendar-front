@@ -5,7 +5,7 @@ import { Style } from "./BaseModal.style";
 interface ICancelModalProps {
   onConfirm: (confirm: boolean) => void;
   mainText: string;
-  subText: string;
+  subText?: string;
 }
 
 export const CancelBaseModal = ({

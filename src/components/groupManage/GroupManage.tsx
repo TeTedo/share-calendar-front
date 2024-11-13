@@ -4,11 +4,13 @@ import { Style } from "./GroupManage.style";
 import { useGetAllGroupMembers } from "hooks/api/group/useGetAllGroupMembers";
 import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
 import { PAGE_URI } from "constants/pageUri";
-import { CategoryManage } from "./CategoryManage";
-import { GroupMemberManage } from "./GroupMemberManage";
+import { CategoryManage } from "./manageDetail/CategoryManage";
+import { GroupMemberManage } from "./manageDetail/GroupMemberManage";
 import { groupCategoryState } from "state/recoil/groupCategoryState";
 import { useRecoilValue } from "recoil";
-import { ApplyManage } from "./ApplyManage";
+import { ApplyManage } from "./manageDetail/ApplyManage";
+import { GroupImg } from "./groupImg/GroupImg";
+import { GroupIntroduce } from "./groupIntroduce/GroupIntroduce";
 
 export const GroupManage = () => {
   const location = useLocation();
@@ -37,82 +39,50 @@ export const GroupManage = () => {
   }, [recoilGroupData, groupData]);
 
   return (
-    <Style.Wrapper>
-      {/* 상단 이미지 부분 */}
-      <Style.TopContainer>
-        <Style.ImgContainer>
-          <img src={groupData.group.groupImg} alt="그룹 프로필" />
-          <img src="/icon/modify_img_icon.svg" alt="수정" />
-        </Style.ImgContainer>
-      </Style.TopContainer>
+    <>
+      <Style.Wrapper>
+        {/* 상단 이미지 부분 */}
+        <GroupImg group={groupData.group} setGroupData={setGroupData} />
 
-      {/* 그룹 소개 */}
-      <Style.GroupMainContainer>
-        <Style.DetailContainer $backgroundColor="#f4f4f4">
-          <div>
-            <div>그룹명</div>
-            <div>{groupData.group.groupName}</div>
-          </div>
-          <div>
-            <div>그룹 코드</div>
-            <div>{groupData.group.groupUuid}</div>
-          </div>
-        </Style.DetailContainer>
-        <Style.DetailContainer>
-          <div>
-            <div>소개</div>
-            <div>{groupData.group.groupName}</div>
-          </div>
-          <div></div>
-        </Style.DetailContainer>
-      </Style.GroupMainContainer>
+        {/* 그룹 소개 */}
+        <GroupIntroduce group={groupData.group} />
 
-      {/* 세팅 선택 */}
-      <Style.ChooseSettingWrapper>
-        <Style.SettingBtn
-          onClick={() => setSelectedCategory(0)}
-          $isSelected={selectedCategory === 0}
-        >
-          그룹원
-        </Style.SettingBtn>
-        <Style.SettingBtn
-          onClick={() => setSelectedCategory(1)}
-          $isSelected={selectedCategory === 1}
-        >
-          카테고리
-        </Style.SettingBtn>
-        <Style.SettingBtn
-          onClick={() => setSelectedCategory(2)}
-          $isSelected={selectedCategory === 2}
-        >
-          가입 신청
-        </Style.SettingBtn>
-      </Style.ChooseSettingWrapper>
+        {/* 세팅 선택 */}
+        <Style.ChooseSettingWrapper>
+          {["그룹원", "카테고리", "가입 신청"].map((name, i) => (
+            <Style.SettingBtn
+              onClick={() => setSelectedCategory(i)}
+              $isSelected={selectedCategory === i}
+              key={i}
+            >
+              {name}
+            </Style.SettingBtn>
+          ))}
+        </Style.ChooseSettingWrapper>
 
-      {/* 세팅 */}
-      <Style.SettingWrapper>
-        {/* 그룹원 세팅 */}
-        {/* <Style.SettingTitle>그룹원 설정</Style.SettingTitle> */}
-        {selectedCategory === 0 && data && (
-          <GroupMemberManage
-            groupData={groupData}
-            groupMemberList={data.groupMemberList}
-          />
-        )}
+        <Style.SettingWrapper>
+          {/* 그룹원 세팅 */}
+          {selectedCategory === 0 && data && (
+            <GroupMemberManage
+              groupData={groupData}
+              groupMemberList={data.groupMemberList}
+            />
+          )}
 
-        {/* 카테고리 세팅 */}
-        {selectedCategory === 1 && (
-          <CategoryManage
-            categoryList={groupData.categoryList}
-            groupId={groupData.group.groupId}
-          />
-        )}
+          {/* 카테고리 세팅 */}
+          {selectedCategory === 1 && (
+            <CategoryManage
+              categoryList={groupData.categoryList}
+              groupId={groupData.group.groupId}
+            />
+          )}
 
-        {/* 그룹 가입 신청 관리*/}
-        {selectedCategory === 2 && (
-          <ApplyManage groupUuid={groupData.group.groupUuid} />
-        )}
-      </Style.SettingWrapper>
-    </Style.Wrapper>
+          {/* 그룹 가입 신청 관리*/}
+          {selectedCategory === 2 && (
+            <ApplyManage groupUuid={groupData.group.groupUuid} />
+          )}
+        </Style.SettingWrapper>
+      </Style.Wrapper>
+    </>
   );
 };

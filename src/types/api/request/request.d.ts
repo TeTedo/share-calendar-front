@@ -12,3 +12,7 @@ interface IProcessApplyRequest {
   groupApplicationId: number;
   acceptState: TAcceptState;
 }
+
+interface IChangeGroupImgRequest {
+  formData: FormData;
+}

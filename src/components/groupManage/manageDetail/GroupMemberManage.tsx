@@ -1,7 +1,7 @@
 import React from "react";
-import { Style } from "./GroupManage.style";
+import { Style } from "../GroupManage.style";
 import { useBaseModal } from "hooks/modal/useBaseModal";
-import { AddGroupMemberModal } from "components/modal/groupManage/AddGroupMemberModal";
+import { AddGroupMemberModal } from "components/modal/groupManage/member/AddGroupMemberModal";
 
 interface IGroupMemberManageProps {
   groupMemberList: IGroupMemberDto[];

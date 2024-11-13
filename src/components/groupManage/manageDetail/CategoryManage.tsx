@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Style } from "./GroupManage.style";
+import { Style } from "../GroupManage.style";
 import { useBaseModal } from "hooks/modal/useBaseModal";
-import { CategoryNamePickModal } from "components/modal/groupManage/CategoryNamePickModal";
-import { CategoryColorPickModal } from "components/modal/groupManage/CategoryColorPickModal";
 import { CancelBaseModal } from "components/modal/CancelBaseModal";
+import { CategoryNamePickModal } from "components/modal/groupManage/category/CategoryNamePickModal";
+import { CategoryColorPickModal } from "components/modal/groupManage/category/CategoryColorPickModal";
 
 interface ICategoryManageProps {
   categoryList: ICategoryDto[];
