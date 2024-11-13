@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CalendarWrapper = styled.div`
   width: 100%;
-  height: 80%;
+  height: calc(100% - 210px);
   overflow-y: scroll;
 
   -ms-overflow-style: none; /* IE and Edge */

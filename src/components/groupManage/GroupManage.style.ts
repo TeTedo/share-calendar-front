@@ -157,4 +157,16 @@ export const Style = {
       height: 5px;
     }
   `,
+
+  RightBtnContainer: styled.div`
+    display: flex;
+    gap: 20px;
+
+    & > div {
+      padding: 2px 5px;
+      border: 1px solid black;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+  `,
 };

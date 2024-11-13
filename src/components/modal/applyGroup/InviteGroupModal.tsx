@@ -1,6 +1,6 @@
 import React from "react";
 import { Style } from "./InviteGroupModal.style";
-import { useApplyGroup } from "hooks/api/invite/useApplyGroup";
+import { useApplyGroup } from "hooks/api/apply/useApplyGroup";
 import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
 
 interface IInviteGroupModalProps {

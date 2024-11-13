@@ -1,4 +1,4 @@
-import { InviteGroupModal } from "components/modal/invite/InviteGroupModal";
+import { InviteGroupModal } from "components/modal/applyGroup/InviteGroupModal";
 import { useGetGroupsWithCategories } from "hooks/api/group/useGetGroupsWithCategories";
 import { useGetAllSchedules } from "hooks/api/schedule/useGetAllSchedules";
 import { useLoginCheck } from "hooks/loginCheck/useLoginCheck";

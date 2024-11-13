@@ -8,6 +8,7 @@ import { CategoryManage } from "./CategoryManage";
 import { GroupMemberManage } from "./GroupMemberManage";
 import { groupCategoryState } from "state/recoil/groupCategoryState";
 import { useRecoilValue } from "recoil";
+import { ApplyManage } from "./ApplyManage";
 
 export const GroupManage = () => {
   const location = useLocation();
@@ -109,10 +110,7 @@ export const GroupManage = () => {
 
         {/* 그룹 가입 신청 관리*/}
         {selectedCategory === 2 && (
-          <CategoryManage
-            categoryList={groupData.categoryList}
-            groupId={groupData.group.groupId}
-          />
+          <ApplyManage groupUuid={groupData.group.groupUuid} />
         )}
       </Style.SettingWrapper>
     </Style.Wrapper>

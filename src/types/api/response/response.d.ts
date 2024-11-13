@@ -13,3 +13,7 @@ interface IGetAllGroupMemberResponse {
 interface IAddCategoryResponse {
   category: ICategoryDto;
 }
+
+interface IProcessApplyResponse {
+  groupApplication: IGroupApplicationDto;
+}
