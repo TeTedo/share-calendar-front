@@ -23,6 +23,8 @@ export const InviteGroupModal = ({
       {
         onSuccess: (response) => {
           toast(response.msg, ToastType.SUCCESS);
+          sessionStorage.removeItem("groupCode");
+          sessionStorage.removeItem("groupName");
           setIsOpen(false);
         },
         onError: () => {
