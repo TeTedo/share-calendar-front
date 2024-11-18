@@ -6,7 +6,7 @@ import React from "react";
 export const HomePage = () => {
   return (
     <div>
-      <GroupListTop name="설정" />
+      <GroupListTop name="메인" />
       <AdMain />
       <MainCom />
     </div>
