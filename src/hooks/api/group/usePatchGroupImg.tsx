@@ -2,15 +2,15 @@ import React from "react";
 import { useAxiosCustom } from "../useAxiosCustom";
 import { useMutation } from "@tanstack/react-query";
 
-export const useChangeGroupImg = (groupUuid: string) => {
+export const usePatchGroupImg = (groupUuid: string) => {
   const axios = useAxiosCustom();
 
   const requestUri = `/api/v1/group/${groupUuid}/img`;
 
-  return useMutation<IAddCategoryResponse, Error, IChangeGroupImgRequest>({
-    mutationFn: async (data: IChangeGroupImgRequest) =>
+  return useMutation<IPatchGroupImgResponse, Error, IPatchGroupImgRequest>({
+    mutationFn: async (data: IPatchGroupImgRequest) =>
       await axios
-        .post(requestUri, data.formData, {
+        .patch(requestUri, data.formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

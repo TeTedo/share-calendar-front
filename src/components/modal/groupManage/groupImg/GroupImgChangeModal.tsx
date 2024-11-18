@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import { Style } from "./GroupImgChangeModal.style";
 import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
-import { useChangeGroupImg } from "hooks/api/group/useChangeGroupImg";
+import { usePatchGroupImg } from "hooks/api/group/usePatchGroupImg";
 
 interface FileWithPreview {
   file: File;
@@ -21,7 +21,7 @@ export const GroupImgChangeModal = ({
     null
   );
   const toast = useToastCustom();
-  const { mutate } = useChangeGroupImg(groupUuid);
+  const { mutate } = usePatchGroupImg(groupUuid);
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];

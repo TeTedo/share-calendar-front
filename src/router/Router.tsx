@@ -19,6 +19,11 @@ export const Router = () => {
     {
       path: PAGE_URI.ROOT,
       element: <EmptyMobileLayout />,
+      children: [{ path: PAGE_URI.ROOT, element: <NotFoundPage /> }],
+    },
+    {
+      path: PAGE_URI.ROOT,
+      element: <EmptyMobileLayout />,
       children: [{ path: PAGE_URI.NOT_FOUND, element: <NotFoundPage /> }],
     },
     {

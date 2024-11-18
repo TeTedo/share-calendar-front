@@ -41,7 +41,11 @@ export const CalendarPage = () => {
         setCurrentGroup={setCurrentGroup}
       />
       <AdMain />
-      <CalendarProfile groupMember={groupMember} />
+      <CalendarProfile
+        groupMember={groupMember}
+        currentGroup={currentGroup!}
+        setGroupMember={setGroupMember}
+      />
       <Calendar currentDate={currentDate} setCurrentDate={setCurrentDate} />
     </CalendarPageWrapper>
   );

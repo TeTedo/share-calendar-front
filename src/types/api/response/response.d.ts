@@ -18,6 +18,10 @@ interface IProcessApplyResponse {
   groupApplication: IGroupApplicationDto;
 }
 
-interface IChangeGroupImgResponse {
+interface IPatchGroupImgResponse {
   group: IGroupDto;
+}
+
+interface IPatchGroupProfileResponse {
+  groupMember: IGroupMemberDto;
 }

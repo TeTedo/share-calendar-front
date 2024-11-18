@@ -13,6 +13,10 @@ interface IProcessApplyRequest {
   acceptState: TAcceptState;
 }
 
-interface IChangeGroupImgRequest {
+interface IPatchGroupImgRequest {
+  formData: FormData;
+}
+
+interface IPatchGroupProfileRequest {
   formData: FormData;
 }
