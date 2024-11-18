@@ -8,6 +8,7 @@ interface IGroupDto {
   groupName: string;
   groupImg: string;
   groupType: string;
+  groupDesc: string;
 }
 
 interface IGroupMemberDto {
