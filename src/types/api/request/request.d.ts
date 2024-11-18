@@ -1,5 +1,6 @@
 interface IAddGroupRequest {
   groupName: string;
+  groupDesc: string;
 }
 
 interface IAddCategoryRequest {
@@ -18,5 +19,9 @@ interface IPatchGroupImgRequest {
 }
 
 interface IPatchGroupProfileRequest {
+  formData: FormData;
+}
+
+interface IPatchMemberInfoRequest {
   formData: FormData;
 }

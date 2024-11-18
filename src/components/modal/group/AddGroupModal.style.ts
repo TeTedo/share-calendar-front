@@ -12,7 +12,7 @@ export const Style = {
     align-items: center;
 
     justify-content: center;
-    gap: 50px;
+    gap: 30px;
     border-radius: 12px;
 
     & > div {
@@ -21,6 +21,14 @@ export const Style = {
       justify-content: center;
       align-items: center;
       gap: 10px;
+    }
+  `,
+
+  GroupDesc: styled.div`
+    textarea {
+      height: 100px;
+      outline: none;
+      resize: none;
     }
   `,
 

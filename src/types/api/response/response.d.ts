@@ -25,3 +25,7 @@ interface IPatchGroupImgResponse {
 interface IPatchGroupProfileResponse {
   groupMember: IGroupMemberDto;
 }
+
+interface IPatchMemberInfoResponse {
+  member: IMemberDto;
+}

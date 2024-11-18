@@ -21,7 +21,7 @@ export const GroupIntroduce = ({ group }: IGroupIntroduceProps) => {
       <Style.DetailContainer>
         <div>
           <div>소개</div>
-          <div>{group.groupName}</div>
+          <div>{group.groupDesc}</div>
         </div>
         <div></div>
       </Style.DetailContainer>

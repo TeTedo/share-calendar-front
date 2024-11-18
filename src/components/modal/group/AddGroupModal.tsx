@@ -10,17 +10,19 @@ interface IAddGroupModalProps {
 }
 export const AddGroupModal = ({ closeAllModals }: IAddGroupModalProps) => {
   const [groupName, setGroupName] = useState<string>("");
+  const [groupDesc, setGroupDesc] = useState<string>("");
 
   const setGroupCategoryList = useSetRecoilState(groupCategoryState);
   const { mutate } = useAddGroup();
   const toast = useToastCustom();
 
   const addGroupHandler = () => {
-    const data = { groupName };
+    const data = { groupName, groupDesc };
 
     mutate(data, {
       onSuccess: (response) => {
         setGroupCategoryList((prev) => [...prev, response.groupCategory]);
+        toast("그룹 생성 완료!!", ToastType.SUCCESS);
         closeAllModals();
       },
       onError: (e) => {
@@ -34,6 +36,10 @@ export const AddGroupModal = ({ closeAllModals }: IAddGroupModalProps) => {
         <div>그룹 이름</div>
         <input type="text" onChange={(e) => setGroupName(e.target.value)} />
       </div>
+      <Style.GroupDesc>
+        <div>그룹 설명</div>
+        <textarea onChange={(e) => setGroupDesc(e.target.value)} />
+      </Style.GroupDesc>
       <Style.AddBtn onClick={() => addGroupHandler()}>생성</Style.AddBtn>
     </Style.Wrapper>
   );
