@@ -40,6 +40,10 @@ export const Style = {
   DetailBox: styled.div`
     padding: 10px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: 1px solid grey;
   `,
   DetailBoxTop: styled.div``,
   ScheduleWrapper: styled.div`
@@ -50,9 +54,13 @@ export const Style = {
     height: 30px;
   `,
 
-  ScheduleDetail: styled.div<{ backgroundColor: string }>`
-    background-color: ${(props) => props.backgroundColor};
+  ScheduleDetail: styled.div<{ $backgroundColor: string }>`
+    background-color: ${(props) => props.$backgroundColor};
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border-radius: 12px;
   `,
 };

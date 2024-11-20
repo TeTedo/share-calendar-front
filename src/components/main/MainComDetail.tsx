@@ -24,13 +24,15 @@ export const MainComDetail = ({ groupingList }: IMainDetailProps) => {
       </Style.TopWrapper>
       {isOpen &&
         Object.keys(groupingList.schedules).map((date) => (
-          <Style.DetailBox>
+          <Style.DetailBox key={date}>
             <Style.DetailBoxTop></Style.DetailBoxTop>
             {groupingList.schedules[date].map((schedule) => (
-              <Style.ScheduleWrapper>
+              <Style.ScheduleWrapper key={schedule.scheduleId}>
                 <Style.ScheduleDetail
-                  backgroundColor={schedule.category.categoryMainColor}
-                ></Style.ScheduleDetail>
+                  $backgroundColor={schedule.category.categoryMainColor}
+                >
+                  {schedule.scheduleName}
+                </Style.ScheduleDetail>
               </Style.ScheduleWrapper>
             ))}
           </Style.DetailBox>

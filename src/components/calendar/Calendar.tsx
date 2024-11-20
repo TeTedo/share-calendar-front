@@ -13,9 +13,11 @@ import { scheduleState } from "state/recoil/scheduleState";
 export const Calendar = ({
   currentDate,
   setCurrentDate,
+  scheduleList,
 }: {
   currentDate: Moment;
   setCurrentDate: Dispatch<SetStateAction<Moment>>;
+  scheduleList: IScheduleDto[];
 }) => {
   const [direction, setDirection] = useState("");
 
@@ -26,8 +28,6 @@ export const Calendar = ({
   const prevMonth = () => {
     setCurrentDate(currentDate.clone().subtract(1, "month"));
   };
-
-  const scheduleList = useRecoilValue(scheduleState);
 
   const daysInMonth = (month: Moment) => {
     const startOfMonth = month.clone().startOf("month");

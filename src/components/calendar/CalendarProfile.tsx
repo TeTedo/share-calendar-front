@@ -6,7 +6,7 @@ import { CancelBaseModal } from "components/modal/CancelBaseModal";
 
 interface ICalendarProfileProps {
   groupMember: IGroupMemberDto | null;
-  currentGroup: IGroupDto;
+  currentGroup: IGroupDto | null;
   setGroupMember: Dispatch<SetStateAction<IGroupMemberDto | null>>;
 }
 export const CalendarProfile = ({
@@ -19,7 +19,7 @@ export const CalendarProfile = ({
       children: [
         <EditGroupMemberModal
           groupMember={groupMember!}
-          currentGroup={currentGroup}
+          currentGroup={currentGroup!}
           setGroupMember={setGroupMember}
           closeAllModals={() => closeAllModals()}
         />,
@@ -44,9 +44,11 @@ export const CalendarProfile = ({
           <img src={groupMember?.groupProfileImg} alt="프로필 이미지" />
           <div>{groupMember?.groupNickname}</div>
         </Style.LeftContainer>
-        <Style.RightContainer onClick={() => setIsOpen(true)}>
-          <img src="/icon/setting_icon.svg" alt="그룹 세팅" />
-        </Style.RightContainer>
+        {groupMember?.groupRole !== "default" && (
+          <Style.RightContainer onClick={() => setIsOpen(true)}>
+            <img src="/icon/setting_icon.svg" alt="그룹 세팅" />
+          </Style.RightContainer>
+        )}
       </CalendarProfileWrapper>
     </>
   );

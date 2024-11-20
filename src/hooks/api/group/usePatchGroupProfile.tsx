@@ -2,7 +2,7 @@ import React from "react";
 import { useAxiosCustom } from "../useAxiosCustom";
 import { useMutation } from "@tanstack/react-query";
 
-export const usePatchGroupProfile = (groupId: number) => {
+export const usePatchGroupProfile = (groupId: number | undefined) => {
   const axios = useAxiosCustom();
 
   const requestUri = `/api/v1/group-member/${groupId}`;
