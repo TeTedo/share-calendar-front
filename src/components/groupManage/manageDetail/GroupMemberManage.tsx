@@ -2,6 +2,7 @@ import React from "react";
 import { Style } from "../GroupManage.style";
 import { useBaseModal } from "hooks/modal/useBaseModal";
 import { AddGroupMemberModal } from "components/modal/groupManage/member/AddGroupMemberModal";
+import { GroupMemberDetail } from "./GroupMemberDetail";
 
 interface IGroupMemberManageProps {
   groupMemberList: IGroupMemberDto[];
@@ -11,21 +12,22 @@ export const GroupMemberManage = ({
   groupMemberList,
   groupData,
 }: IGroupMemberManageProps) => {
-  const { modal, setIsOpen } = useBaseModal({
-    children: [
-      <AddGroupMemberModal
-        group={groupData.group}
-        setIsOpen={(isOpen: boolean) => setIsOpen(isOpen)}
-      />,
-    ],
-    closeCallBack: () => {},
-    isBackgroundBlack: true,
-    isCenter: true,
-  });
+  const { modal: addGroupMemberModal, setIsOpen: openGroupMemberModal } =
+    useBaseModal({
+      children: [
+        <AddGroupMemberModal
+          group={groupData.group}
+          setIsOpen={(isOpen: boolean) => openGroupMemberModal(isOpen)}
+        />,
+      ],
+      closeCallBack: () => {},
+      isBackgroundBlack: true,
+      isCenter: true,
+    });
 
   return (
     <>
-      {modal}
+      {addGroupMemberModal}
       <Style.GroupSetting>
         <Style.DetailContainer>
           <div>
@@ -35,21 +37,14 @@ export const GroupMemberManage = ({
           <div></div>
         </Style.DetailContainer>
 
+        {/* 그룹원 멤버 리스트 */}
         {groupMemberList.map((groupMember, idx) => (
-          <Style.GroupSettingDetail key={idx}>
-            <Style.GroupLeft>
-              <img src={groupMember.groupProfileImg} alt="프로필" />
-              <div>{groupMember.groupNickname}</div>
-            </Style.GroupLeft>
-            <Style.GroupRight>
-              <img src="/icon/detail_setting_icon.svg" alt="설정" />
-            </Style.GroupRight>
-          </Style.GroupSettingDetail>
+          <GroupMemberDetail key={idx} groupMember={groupMember} />
         ))}
 
         {/* 그룹원 추가 */}
         {groupData.group.groupType !== "DEFAULT" && (
-          <Style.GroupSettingDetail onClick={() => setIsOpen(true)}>
+          <Style.GroupSettingDetail onClick={() => openGroupMemberModal(true)}>
             <Style.GroupLeft>
               <img src="/icon/empty_profile_icon.svg" alt="프로필" />
               <div>
