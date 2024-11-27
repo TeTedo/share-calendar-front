@@ -3,6 +3,7 @@ import { Style } from "../GroupManage.style";
 import { useBaseModal } from "hooks/modal/useBaseModal";
 import { AddGroupMemberModal } from "components/modal/groupManage/member/AddGroupMemberModal";
 import { GroupMemberDetail } from "./GroupMemberDetail";
+import { useGetGroupMember } from "hooks/api/group/useGetGroupMember";
 
 interface IGroupMemberManageProps {
   groupMemberList: IGroupMemberDto[];
@@ -12,6 +13,8 @@ export const GroupMemberManage = ({
   groupMemberList,
   groupData,
 }: IGroupMemberManageProps) => {
+  const { data: groupProfile } = useGetGroupMember(groupData.group);
+
   const { modal: addGroupMemberModal, setIsOpen: openGroupMemberModal } =
     useBaseModal({
       children: [
@@ -38,9 +41,14 @@ export const GroupMemberManage = ({
         </Style.DetailContainer>
 
         {/* 그룹원 멤버 리스트 */}
-        {groupMemberList.map((groupMember, idx) => (
-          <GroupMemberDetail key={idx} groupMember={groupMember} />
-        ))}
+        {groupProfile &&
+          groupMemberList.map((groupMember, idx) => (
+            <GroupMemberDetail
+              key={idx}
+              groupMember={groupMember}
+              profile={groupProfile.groupMember}
+            />
+          ))}
 
         {/* 그룹원 추가 */}
         {groupData.group.groupType !== "DEFAULT" && (

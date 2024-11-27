@@ -7,19 +7,22 @@ import { memberState } from "state/recoil/memberState";
 
 interface IGroupMemberDetailProps {
   groupMember: IGroupMemberDto;
+  profile: IGroupMemberDto;
 }
 
 interface IPos {
   x: number;
   y: number;
 }
-export const GroupMemberDetail = ({ groupMember }: IGroupMemberDetailProps) => {
+export const GroupMemberDetail = ({
+  groupMember,
+  profile,
+}: IGroupMemberDetailProps) => {
   const [pos, setPos] = useState<IPos>({ x: 0, y: 0 });
-  const member = useRecoilValue(memberState);
 
   const { modal: manageMemberModal, setIsOpen: openManageMemberModal } =
     useBaseModal({
-      children: [<ManageGroupMemberModal pos={pos} />],
+      children: [<ManageGroupMemberModal pos={pos} profile={profile} />],
       closeCallBack: () => {},
       isBackgroundBlack: false,
       isCenter: false,
@@ -41,11 +44,14 @@ export const GroupMemberDetail = ({ groupMember }: IGroupMemberDetailProps) => {
           <img src={groupMember.groupProfileImg} alt="프로필" />
           <div>{groupMember.groupNickname}</div>
         </Style.GroupLeft>
-        {member.role !== "GUEST" && (
-          <Style.GroupRight onClick={openMangeModalHandler}>
-            <img src="/icon/detail_setting_icon.svg" alt="설정" />
-          </Style.GroupRight>
-        )}
+        {profile.groupRole !== "GUEST" &&
+          (groupMember.groupRole === "GUEST" ||
+            profile.groupRole === "MASTER") &&
+          groupMember.groupRole !== "MASTER" && (
+            <Style.GroupRight onClick={openMangeModalHandler}>
+              <img src="/icon/detail_setting_icon.svg" alt="설정" />
+            </Style.GroupRight>
+          )}
       </Style.GroupSettingDetail>
     </>
   );
