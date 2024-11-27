@@ -26,6 +26,10 @@ interface IPatchGroupProfileResponse {
   groupMember: IGroupMemberDto;
 }
 
+interface IPatchGroupMemberRoleResponse {
+  groupMember: IGroupMemberDto;
+}
+
 interface IPatchMemberInfoResponse {
   member: IMemberDto;
 }

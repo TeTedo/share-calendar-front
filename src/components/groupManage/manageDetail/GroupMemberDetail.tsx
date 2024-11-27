@@ -8,6 +8,7 @@ import { memberState } from "state/recoil/memberState";
 interface IGroupMemberDetailProps {
   groupMember: IGroupMemberDto;
   profile: IGroupMemberDto;
+  group: IGroupDto;
 }
 
 interface IPos {
@@ -17,16 +18,28 @@ interface IPos {
 export const GroupMemberDetail = ({
   groupMember,
   profile,
+  group,
 }: IGroupMemberDetailProps) => {
   const [pos, setPos] = useState<IPos>({ x: 0, y: 0 });
 
-  const { modal: manageMemberModal, setIsOpen: openManageMemberModal } =
-    useBaseModal({
-      children: [<ManageGroupMemberModal pos={pos} profile={profile} />],
-      closeCallBack: () => {},
-      isBackgroundBlack: false,
-      isCenter: false,
-    });
+  const {
+    modal: manageMemberModal,
+    setIsOpen: openManageMemberModal,
+    closeAllModals,
+  } = useBaseModal({
+    children: [
+      <ManageGroupMemberModal
+        pos={pos}
+        profile={profile}
+        groupMember={groupMember}
+        group={group}
+        closeAllModals={() => closeAllModals()}
+      />,
+    ],
+    closeCallBack: () => {},
+    isBackgroundBlack: false,
+    isCenter: false,
+  });
 
   const openMangeModalHandler = (event: React.MouseEvent<HTMLImageElement>) => {
     const x = event.clientX;

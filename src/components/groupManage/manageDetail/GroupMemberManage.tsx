@@ -47,6 +47,7 @@ export const GroupMemberManage = ({
               key={idx}
               groupMember={groupMember}
               profile={groupProfile.groupMember}
+              group={groupData.group}
             />
           ))}
 

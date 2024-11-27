@@ -12,6 +12,7 @@ interface IGroupDto {
 }
 
 interface IGroupMemberDto {
+  groupMemberId: number;
   groupNickname: string;
   groupProfileImg: string;
   groupRole: string;
