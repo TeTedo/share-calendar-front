@@ -2,7 +2,7 @@ import React from "react";
 import { useAxiosCustom } from "../useAxiosCustom";
 import { useMutation } from "@tanstack/react-query";
 
-export const usePatchGroupMemberRole = ({
+export const useDeleteGroupMember = ({
   groupId,
   groupMemberId,
 }: {
@@ -11,14 +11,14 @@ export const usePatchGroupMemberRole = ({
 }) => {
   const axios = useAxiosCustom();
 
-  const requestUri = `/api/v1/group-member/${groupId}/role/${groupMemberId}`;
+  const requestUri = `/api/v1/group-member/${groupId}/${groupMemberId}`;
 
   return useMutation<
-    IPatchGroupMemberRoleResponse,
+    IDeleteGroupMemberResponse,
     Error,
-    IPatchGroupMemberRoleRequest
+    IDeleteGroupMemberRequest
   >({
     mutationFn: async () =>
-      await axios.patch(requestUri, {}).then((response) => response.data),
+      await axios.delete(requestUri, {}).then((response) => response.data),
   });
 };

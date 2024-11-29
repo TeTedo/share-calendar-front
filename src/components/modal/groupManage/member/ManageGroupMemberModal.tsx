@@ -4,6 +4,8 @@ import { useRecoilValue } from "recoil";
 import { memberState } from "state/recoil/memberState";
 import { usePatchGroupMemberRole } from "hooks/api/group/usePatchGroupMemberRole";
 import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
+import { useBaseModal } from "hooks/modal/useBaseModal";
+import { KickGroupMemberModal } from "./KickGroupMemberModal";
 
 interface IManageGroupMemberModalProps {
   pos: { x: number; y: number };
@@ -25,6 +27,18 @@ export const ManageGroupMemberModal = ({
   const { mutate: patchGroupMemberRole } = usePatchGroupMemberRole({
     groupMemberId: groupMember.groupMemberId,
     groupId: group.groupId,
+  });
+
+  const { setIsOpen: openKickModal, modal: kickModal } = useBaseModal({
+    children: [
+      <KickGroupMemberModal
+        groupMember={groupMember}
+        group={group}
+        closeAllModals={() => closeAllModals()}
+      />,
+    ],
+    isBackgroundBlack: true,
+    isCenter: true,
   });
 
   const _ModalMenu = [
@@ -51,21 +65,26 @@ export const ManageGroupMemberModal = ({
       id: 2,
       name: "내보내기",
       role: ["MASTER", "MANAGER"],
-      onClick: () => {},
+      onClick: () => {
+        openKickModal(true);
+      },
     },
   ];
 
   return (
-    <Style.Wrapper $x={pos.x} $y={pos.y}>
-      {_ModalMenu.map((menu) => (
-        <>
-          {menu.role.includes(profile.groupRole) && (
-            <Style.MenuWrapper onClick={menu.onClick}>
-              {menu.name}
-            </Style.MenuWrapper>
-          )}
-        </>
-      ))}
-    </Style.Wrapper>
+    <>
+      {kickModal}
+      <Style.Wrapper $x={pos.x} $y={pos.y}>
+        {_ModalMenu.map((menu) => (
+          <>
+            {menu.role.includes(profile.groupRole) && (
+              <Style.MenuWrapper onClick={menu.onClick}>
+                {menu.name}
+              </Style.MenuWrapper>
+            )}
+          </>
+        ))}
+      </Style.Wrapper>
+    </>
   );
 };

@@ -30,6 +30,10 @@ interface IPatchGroupMemberRoleResponse {
   groupMember: IGroupMemberDto;
 }
 
+interface IDeleteGroupMemberResponse {
+  code: string;
+}
+
 interface IPatchMemberInfoResponse {
   member: IMemberDto;
 }

@@ -36,7 +36,6 @@ export const GroupMemberDetail = ({
         closeAllModals={() => closeAllModals()}
       />,
     ],
-    closeCallBack: () => {},
     isBackgroundBlack: false,
     isCenter: false,
   });

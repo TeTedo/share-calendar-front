@@ -78,9 +78,7 @@ export const GroupManage = () => {
           )}
 
           {/* 그룹 가입 신청 관리*/}
-          {selectedCategory === 2 && (
-            <ApplyManage groupUuid={groupData.group.groupUuid} />
-          )}
+          {selectedCategory === 2 && <ApplyManage group={groupData.group} />}
         </Style.SettingWrapper>
       </Style.Wrapper>
     </>

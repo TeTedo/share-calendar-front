@@ -7,14 +7,14 @@ import { ToastType, useToastCustom } from "hooks/toast/useToastCustom";
 import { useQueryClient } from "@tanstack/react-query";
 
 interface IApplyManageProps {
-  groupUuid: string;
+  group: IGroupDto;
 }
 
-export const ApplyManage = ({ groupUuid }: IApplyManageProps) => {
+export const ApplyManage = ({ group }: IApplyManageProps) => {
   const queryClient = useQueryClient();
-  const { data } = useGetGroupApplication(groupUuid);
+  const { data } = useGetGroupApplication(group.groupUuid);
 
-  const { mutate } = useProcessApply(groupUuid);
+  const { mutate } = useProcessApply(group.groupUuid);
   const toast = useToastCustom();
   const processApplyHandler = (groupApplicationId: number, accept: boolean) => {
     const data: IProcessApplyRequest = {
@@ -26,7 +26,10 @@ export const ApplyManage = ({ groupUuid }: IApplyManageProps) => {
         const isAcceptMsg = data.acceptState === "ACCEPT" ? "승인" : "거절";
         toast(`${isAcceptMsg} 처리 완료!!`, ToastType.SUCCESS);
         queryClient.invalidateQueries({
-          queryKey: [`group-application/${groupUuid}`],
+          queryKey: [`group-application/${group.groupUuid}`],
+        });
+        queryClient.invalidateQueries({
+          queryKey: [["/group-members/" + group.groupId]],
         });
       },
       onError: (e) => {

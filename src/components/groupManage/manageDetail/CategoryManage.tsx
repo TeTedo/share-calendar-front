@@ -39,7 +39,6 @@ export const CategoryManage = ({
         groupId={groupId}
       />,
     ],
-    closeCallBack: () => {},
     isBackgroundBlack: true,
     isCenter: true,
     confirmationSteps: [

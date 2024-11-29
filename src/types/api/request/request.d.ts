@@ -19,6 +19,7 @@ interface IPatchGroupImgRequest {
 }
 
 interface IPatchGroupMemberRoleRequest {}
+interface IDeleteGroupMemberRequest {}
 
 interface IPatchGroupProfileRequest {
   formData: FormData;
